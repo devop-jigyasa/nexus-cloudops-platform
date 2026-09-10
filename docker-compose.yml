@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  nexus-app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: nexus-cloudops-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=nexus-cloudops-service
+      - ENVIRONMENT=local-dev
+      - REDIS_HOST=nexus-redis
+      - REDIS_PORT=6379
+      - LOG_LEVEL=INFO
+    depends_on:
+      nexus-redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+    networks:
+      - nexus-network
+
+  nexus-redis:
+    image: redis:7.2-alpine
+    container_name: nexus-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nexus-network
+
+  localstack:
+    image: localstack/localstack:3.0
+    container_name: nexus-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,dynamodb,iam,sts
+      - AWS_DEFAULT_REGION=us-east-1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - localstack-data:/var/lib/localstack
+      - ./localstack-init:/etc/localstack/init/ready.d
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nexus-network
+
+networks:
+  nexus-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  localstack-data:
