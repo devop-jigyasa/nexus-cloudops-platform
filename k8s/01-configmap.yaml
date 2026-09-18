@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nexus-app-config
+  namespace: nexus-cloudops
+data:
+  APP_NAME: "nexus-cloudops-service"
+  ENVIRONMENT: "k8s-cluster"
+  LOG_LEVEL: "INFO"
+  PORT: "8000"
+  REDIS_HOST: "nexus-redis-service"
+  REDIS_PORT: "6379"

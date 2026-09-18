@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nexus-cloudops
+  labels:
+    app.kubernetes.io/name: nexus-platform
+    environment: production
