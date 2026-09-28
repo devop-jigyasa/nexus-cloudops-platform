@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+rule_files:
+  - "alerts.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "nexus-alertmanager:9093"
+
+scrape_configs:
+  - job_name: "nexus-app"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["nexus-app:8000"]
+        labels:
+          environment: "local-dev"
+          service: "nexus-cloudops-service"
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
