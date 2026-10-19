@@ -1,5 +1,5 @@
 # Stage 1: Build Dependencies
-FROM python:3.11-slim AS builder
+FROM python:3.14-slim AS builder
 
 WORKDIR /build
 
@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --user -r requirements.txt
 
 # Stage 2: Minimal Secure Runtime
-FROM python:3.11-slim AS runner
+FROM python:3.14-slim AS runner
 
 WORKDIR /app
 
