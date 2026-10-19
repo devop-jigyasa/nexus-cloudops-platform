@@ -159,25 +159,53 @@ nexus-cloudops-platform/
 
 ## 🛡️ DevSecOps CI/CD Pipeline
 
-The `.github/workflows/ci.yml` pipeline triggers automatically on every push or pull request to `main`:
+The `.github/workflows/ci.yml` pipeline triggers automatically on every push or pull request to `main`, enforcing automated quality, testing, security, and packaging gates:
 
 ```mermaid
-flowchart LR
-    A[1. Code Quality] -->|Flake8 & Black| B[2. Automated Tests]
-    B -->|Pytest + Coverage| C[3. Security Scan]
-    C -->|Trivy Vulnerability & Secret Scan| D[4. Multi-Stage Build]
-    D -->|Docker Buildx + Trivy Image Scan| E[5. Helm Validation]
-    E -->|Helm Lint & Template Dry-Run| F([✅ Ready for Deployment])
+flowchart TD
+    subgraph Stage1 ["Stage 1: Code Quality & Linting"]
+        A["🔍 <b>Static Analysis & Style Gate</b><br/>• Flake8 PEP8 Enforcement<br/>• Black Automated Formatting Verification"]
+    end
 
-    classDef pass fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff;
-    class A,B,C,D,E,F pass;
+    subgraph Stage2 ["Stage 2: Automated Testing & Coverage"]
+        B["🧪 <b>Pytest Test Suite</b><br/>• Unit & Integration API Tests<br/>• Redis Mock Test Harness<br/>• Code Coverage Metrics (XML & Terminal)"]
+    end
+
+    subgraph Stage3 ["Stage 3: DevSecOps Vulnerability & Secret Scan"]
+        C["🛡️ <b>Aqua Security Trivy (Filesystem & IaC)</b><br/>• Repository CVE Vulnerability Scan<br/>• Hardcoded Secret & Credential Detection<br/>• Terraform IaC Misconfiguration Inspection"]
+    end
+
+    subgraph Stage4 ["Stage 4: Container Hardening & Image Scan"]
+        D["🐳 <b>Docker Buildx & Multi-Stage Image Scan</b><br/>• Minimal Attack Surface Multi-Stage Build<br/>• Non-Root Security Sandbox (UID 10001)<br/>• Trivy Container Scan (Blocks CRITICAL/HIGH CVEs)"]
+    end
+
+    subgraph Stage5 ["Stage 5: Helm Chart & Manifest Validation"]
+        E["☸️ <b>Kubernetes Package Verification</b><br/>• Helm Lint Static Analysis<br/>• Dry-Run Template Rendering (helm template)<br/>• Kubernetes Schema Conformance"]
+    end
+
+    subgraph Stage6 ["Stage 6: Production Delivery"]
+        F(["🚀 <b>Production Release Candidate Approved</b><br/>Zero-Defect Artifact Ready for Continuous Deployment"])
+    end
+
+    Stage1 ==> Stage2 ==> Stage3 ==> Stage4 ==> Stage5 ==> Stage6
+
+    classDef card fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef success fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+
+    class A,B,C,D,E card;
+    class F success;
 ```
 
-1. **Stage 1: Code Quality & Linting** — Enforces PEP8 compliance using `flake8` and verifies code formatting with `black`.
-2. **Stage 2: Automated Testing** — Runs `pytest` with code coverage reports, validating endpoint logic, error handlers, and caching.
-3. **Stage 3: DevSecOps Vulnerability & Secret Scan** — **Aqua Security Trivy** scans the entire codebase and IaC manifests for hardcoded secrets, misconfigurations, and CVEs.
-4. **Stage 4: Container Build & Image Scan** — Builds the multi-stage Docker container via `buildx` and scans the resulting image layers for `HIGH` and `CRITICAL` vulnerabilities.
-5. **Stage 5: Helm Chart Validation** — Executes `helm lint` and `helm template` dry-runs to ensure Kubernetes deployment packages are syntactically sound.
+### DevSecOps Pipeline Stage Matrix
+
+| Stage | Tooling | Scope | Security & Quality Gate |
+| :---: | :---: | :---: | :--- |
+| **1. Code Quality** | `flake8`, `black` | Microservice (`app/src`, `app/tests`) | Zero lint errors; PEP8 strict adherence |
+| **2. Automated Tests** | `pytest`, `pytest-cov` | Application logic & Redis cache | 100% test pass rate with coverage telemetry |
+| **3. Vulnerability Scan** | `Aqua Security Trivy` | Source code, dependencies, IaC | Detects known CVEs, exposed secrets & misconfigurations |
+| **4. Container Hardening** | `Docker Buildx`, `Trivy` | Multi-stage image (`UID 10001`) | Fails build on `CRITICAL` or `HIGH` vulnerabilities |
+| **5. Helm Validation** | `helm lint`, `helm template` | Helm Chart (`charts/nexus-platform`) | Dry-run template rendering & K8s schema verification |
+| **6. Continuous Delivery** | `GitOps / Cloud Registry` | Production cluster release | Automated deployment to live cloud environment |
 
 ---
 
