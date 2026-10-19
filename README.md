@@ -1,193 +1,314 @@
-# Nexus CloudOps Platform 🚀
-> **Enterprise-Grade Cloud Infrastructure, DevSecOps CI/CD, Kubernetes Orchestration & Observability Platform**
+<div align="center">
 
-[![CI Pipeline](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-blue?logo=github-actions)](.github/workflows/ci.yml)
-[![Terraform](https://img.shields.io/badge/IaC-Terraform_1.5+-purple?logo=terraform)](terraform/)
-[![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes_%26_Helm-326CE5?logo=kubernetes)](k8s/)
-[![Security](https://img.shields.io/badge/DevSecOps-Trivy_Hardened-orange?logo=aqua)](.github/workflows/ci.yml)
-[![LocalStack](https://img.shields.io/badge/Zero_Cost-LocalStack_AWS-00D2B4?logo=amazonaws)](terraform/environments/local/)
-[![Observability](https://img.shields.io/badge/Metrics-Prometheus_%26_Grafana-E6522C?logo=prometheus)](observability/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+# ⚡ Nexus CloudOps Platform
+### **Enterprise-Grade Cloud Infrastructure, DevSecOps CI/CD, Kubernetes Orchestration & Observability Platform**
+
+[![Live Cloud Demo](https://img.shields.io/badge/Live_Demo-Online_(24%2F7)-00c58e?style=for-the-badge&logo=render&logoColor=white)](https://nexus-cloudops-platform.onrender.com/api/docs)
+[![GitHub Repository](https://img.shields.io/badge/GitHub_Repo-nexus--cloudops--platform-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/devop-jigyasa/nexus-cloudops-platform)
+
+<br/>
+
+[![CI Pipeline](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)](.github/workflows/ci.yml)
+[![Terraform IaC](https://img.shields.io/badge/IaC-Terraform_1.5+-844FBA?style=flat-square&logo=terraform&logoColor=white)](terraform/)
+[![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes_%26_Helm-326CE5?style=flat-square&logo=kubernetes&logoColor=white)](k8s/)
+[![Security Hardened](https://img.shields.io/badge/DevSecOps-Trivy_Hardened-FF6B6B?style=flat-square&logo=aqua&logoColor=white)](.github/workflows/ci.yml)
+[![Zero-Cost AWS](https://img.shields.io/badge/Cloud_Parity-LocalStack_AWS-00D2B4?style=flat-square&logo=amazonaws&logoColor=white)](terraform/environments/local/)
+[![Observability](https://img.shields.io/badge/Observability-Prometheus_%26_Grafana-E6522C?style=flat-square&logo=prometheus&logoColor=white)](observability/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-F9C74F?style=flat-square)](LICENSE)
+
+<br/>
+
+**[🌐 Live Cloud Deployment](https://nexus-cloudops-platform.onrender.com/api/docs)** • 
+**[📖 Interactive Swagger Docs](https://nexus-cloudops-platform.onrender.com/api/docs)** • 
+**[🏗️ Architecture Blueprint](#-system-architecture)** • 
+**[🛡️ DevSecOps Pipeline](#-devsecops-cicd-pipeline)** • 
+**[⚡ Local Quickstart](#-quickstart-guide)**
 
 ---
 
-## 🌟 Overview & Engineering Highlights
+</div>
 
-**Nexus CloudOps** is an end-to-end cloud platform engineering project demonstrating real-world production DevOps practices without incurring paid cloud costs. 
+## 📌 Executive Summary
 
-Traditional cloud architectures often introduce unnecessary friction and significant cloud bills during local development and testing. **Nexus CloudOps solves this through complete Environment Parity**:
-* **$0.00 Cloud Spend:** Uses **LocalStack** to emulate AWS VPC, Subnets, IAM, and S3 locally, allowing 100% of the Terraform infrastructure code to be planned, applied, and verified locally for free.
-* **Dual-Target IaC:** The exact same Terraform code switches between LocalStack (`terraform/environments/local`) and live AWS (`terraform/environments/aws`) with clean modular separation.
-* **Container Hardening & DevSecOps:** Multi-stage Docker builds creating minimal attack surface with non-root security contexts (`UID 10001`), integrated with **Aqua Security Trivy** vulnerability scanning.
-* **Production Kubernetes Delivery:** Native manifests and a parameterized **Helm chart** with Horizontal Pod Autoscaler (HPA), rolling updates (`maxSurge: 1`, `maxUnavailable: 0`), and HTTP liveness/readiness probes.
-* **Complete Observability:** Prometheus metric scrapers collecting custom service counters, latency histograms, and alert rules integrated with pre-provisioned Grafana telemetry dashboards.
+**Nexus CloudOps Platform** is an enterprise-grade cloud engineering and platform operations solution architected to demonstrate modern **DevSecOps**, **Infrastructure as Code (IaC)**, and **Cloud-Native Kubernetes delivery** while maintaining a strict **$0.00 cloud operational cost**.
+
+In standard industry environments, validating cloud infrastructure and testing deployment automation often leads to ballooning cloud bills, configuration drift, and unvetted container vulnerabilities. **Nexus CloudOps solves this through complete Environment Parity**:
+
+* **$0.00 Cloud Spend with 1:1 AWS Parity:** Implements dual-target Terraform modules that seamlessly deploy to **LocalStack** locally or **AWS EKS** in production without changing application or infrastructure logic.
+* **Shift-Left DevSecOps Pipeline:** Automated GitHub Actions workflow integrating code quality, pytest unit/coverage suites, **Aqua Security Trivy** vulnerability gates, Docker multi-stage builds, and Helm chart validation.
+* **Production-Grade Kubernetes Orchestration:** Zero-downtime rolling updates (`maxSurge: 1`, `maxUnavailable: 0`), Horizontal Pod Autoscaling (HPA), dedicated Kubernetes probes (`/healthz` vs `/readyz`), and strict non-root container sandboxing (`UID 10001`).
+* **Deep Observability & Telemetry:** Native Prometheus instrumentation exposing RED metrics (Rate, Errors, Duration), latency histograms, custom alert thresholds, and automated Grafana telemetry dashboards.
 
 ---
 
-## 🏗️ Architecture Blueprint
+## ⚖️ Why This Platform Stands Out
+
+| Industry Challenge | Traditional Fresher Project | Nexus CloudOps Platform (Production Grade) |
+| :--- | :--- | :--- |
+| **Cloud Infrastructure** | Manual AWS Console creation (ClickOps) | **100% Modular Terraform IaC** with S3 remote state & DynamoDB locking |
+| **Cloud Billing** | Generates costly AWS bills or stops working | **$0.00 Cost Parity** using LocalStack emulation with dual-target switch |
+| **Container Security** | Heavy root-user images with hundreds of CVEs | **Multi-stage distroless-style build**, non-root user (`UID 10001`), **Trivy scanning** |
+| **Kubernetes Delivery** | Bare `deployment.yaml` with hardcoded values | **Parameterized Helm Chart** + Raw manifests with HPA & Ingress routing |
+| **Health & Reliability** | Single `/health` endpoint returning string | **Separate `/healthz` (liveness) and `/readyz` (Redis dependency checks)** |
+| **Monitoring & SRE** | Basic console print logs | **Prometheus metrics endpoint** (`/metrics`) + pre-provisioned Grafana dashboards |
+
+---
+
+## 🏗️ System Architecture
 
 ```mermaid
-graph TD
-    subgraph Client & Ingress
-        Users([HTTP Traffic]) --> Ingress[NGINX Ingress Controller]
+flowchart TD
+    subgraph Traffic["🌐 Edge & Ingress Layer"]
+        User([HTTP Traffic]) --> Ingress[NGINX Ingress Controller]
     end
 
-    subgraph Kubernetes Cluster (Minikube / Kind / EKS)
-        Ingress --> K8sSvc[Service: nexus-app-service:80]
-        K8sSvc --> HPA[Horizontal Pod Autoscaler (2-10 pods)]
-        HPA --> Pod1[Nexus Pod 1]
-        HPA --> Pod2[Nexus Pod 2]
-        HPA --> Pod3[Nexus Pod N]
+    subgraph K8s["☸️ Kubernetes Cluster (EKS / Minikube / Kind)"]
+        Ingress --> K8sSvc[ClusterIP Service: nexus-app-service:80]
+        K8sSvc --> HPA[Horizontal Pod Autoscaler (2-10 Replicas)]
+        HPA --> Pod1[Nexus Pod 1<br/>UID: 10001]
+        HPA --> Pod2[Nexus Pod 2<br/>UID: 10001]
+        HPA --> PodN[Nexus Pod N<br/>UID: 10001]
     end
 
-    subgraph Caching & Persistence
-        Pod1 & Pod2 & Pod3 --> Redis[(Redis 7 Cluster)]
-        Pod1 & Pod2 & Pod3 --> LocalStack[(LocalStack / AWS S3 & DynamoDB)]
+    subgraph State["💾 State & Cloud Storage Layer"]
+        Pod1 & Pod2 & PodN --> Redis[(Redis 7 In-Memory Cache<br/>Sub-millisecond Latency)]
+        Pod1 & Pod2 & PodN --> CloudStore[(LocalStack / AWS S3 & DynamoDB<br/>Remote State & Lock Table)]
     end
 
-    subgraph Telemetry & DevSecOps
-        Prometheus[Prometheus Monitoring] -.->|Scrapes /metrics| Pod1 & Pod2 & Pod3
-        Prometheus --> Alertmanager[Alertmanager Notification Engine]
-        Grafana[Grafana Dashboards] -->|Queries| Prometheus
-        Trivy[Trivy DevSecOps] -.->|Vulnerability Gate| Pod1
+    subgraph Observability["📊 Telemetry & Observability Stack"]
+        Prometheus[Prometheus Server] -.->|Scrapes /metrics @ 15s| Pod1 & Pod2 & PodN
+        Prometheus --> Alertmanager[Alertmanager Routing Engine]
+        Grafana[Grafana Visualization] -->|PromQL Queries| Prometheus
     end
+
+    subgraph DevSecOps["🛡️ DevSecOps CI/CD Automation"]
+        GitPush[Git Push / PR] --> GHA[GitHub Actions Runner]
+        GHA --> Trivy[Trivy Vulnerability Scanner]
+        Trivy -.->|Security Gate: Block CRITICAL/HIGH| K8s
+    end
+
+    classDef primary fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#fff;
+    classDef secondary fill:#059669,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef accent fill:#d97706,stroke:#b45309,stroke-width:2px,color:#fff;
+    classDef security fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#fff;
+
+    class Ingress,K8sSvc primary;
+    class Redis,CloudStore secondary;
+    class Prometheus,Grafana accent;
+    class Trivy,GHA security;
 ```
 
 ---
 
-## 📂 Repository Structure
+## 📂 Repository Layout
 
-```
+```text
 nexus-cloudops-platform/
-├── .github/workflows/
-│   └── ci.yml                     # Multi-stage DevSecOps pipeline
-├── app/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # 5-Stage DevSecOps CI/CD Pipeline
+├── app/                           # Cloud-Native Python Microservice
 │   ├── src/
-│   │   ├── main.py                # FastAPI microservice with probes & metrics
-│   │   ├── config.py              # Environment configuration loader
-│   │   └── metrics.py             # Prometheus metrics definitions
+│   │   ├── main.py                # FastAPI engine with probes, Redis cache & metrics
+│   │   ├── config.py              # Pydantic-based settings & environment loader
+│   │   └── metrics.py             # Prometheus counters, gauges, and latency histograms
 │   ├── tests/
-│   │   ├── test_api.py            # Automated Pytest test suite
-│   │   └── conftest.py            # Test fixtures and Redis mocks
-│   ├── Dockerfile                 # Hardened multi-stage build (non-root)
-│   └── requirements.txt
-├── terraform/
+│   │   ├── conftest.py            # Pytest test fixtures & mock Redis harness
+│   │   └── test_api.py            # Comprehensive unit & integration test suite
+│   ├── Dockerfile                 # Hardened multi-stage build (appuser: UID 10001)
+│   ├── requirements.txt           # Production dependencies
+│   └── requirements-dev.txt       # Flake8, Black, Pytest coverage tooling
+├── terraform/                     # Infrastructure as Code (Dual-Target)
 │   ├── modules/
-│   │   ├── vpc/                   # VPC, Subnets, IGW, Route tables
-│   │   ├── security/              # Fine-grained security groups
-│   │   ├── s3/                    # S3 bucket with encryption & versioning
-│   │   └── iam/                   # Least-privilege IAM roles and policies
+│   │   ├── vpc/                   # VPC, Public/Private Subnets, IGW, Route Tables
+│   │   ├── s3/                    # S3 Bucket with AES-256 encryption & versioning
+│   │   ├── iam/                   # Least-privilege IAM roles and policy attachments
+│   │   └── security/              # Fine-grained security groups (least-privilege)
 │   └── environments/
-│       ├── local/                 # LocalStack provider config ($0 cost)
-│       └── aws/                   # Production AWS provider config
-├── k8s/
-│   ├── 00-namespace.yaml          # Isolated namespace
-│   ├── 01-configmap.yaml          # ConfigMap
-│   ├── 02-secrets.yaml            # Secret management
-│   ├── 03-deployment.yaml         # App deployment with probes & limits
-│   ├── 04-service.yaml            # ClusterIP service
-│   ├── 05-ingress.yaml            # Ingress rules
-│   └── 06-hpa.yaml                # Autoscaling policy
+│       ├── local/                 # $0.00 LocalStack AWS environment configuration
+│       └── aws/                   # Production AWS EKS environment configuration
+├── k8s/                           # Raw Kubernetes Manifests
+│   ├── 00-namespace.yaml          # Isolated cluster namespace
+│   ├── 01-configmap.yaml          # Centralized environment parameters
+│   ├── 02-secrets.yaml            # Base64 encrypted credentials
+│   ├── 03-deployment.yaml         # RollingUpdate Deployment (securityContext & probes)
+│   ├── 04-service.yaml            # ClusterIP internal service abstraction
+│   ├── 05-ingress.yaml            # NGINX Ingress rules with path routing
+│   └── 06-hpa.yaml                # Horizontal Pod Autoscaler (CPU target: 70%)
 ├── charts/
-│   └── nexus-platform/            # Production Helm Chart
+│   └── nexus-platform/            # Production Helm Packaging Chart
+│       ├── Chart.yaml             # Helm metadata & semantic versioning
+│       ├── values.yaml            # Parameterized values for Multi-Environment deploy
+│       └── templates/             # Modular deployment, service, and ingress templates
+├── localstack-init/
+│   └── 01-init-aws.sh             # Mock AWS bootstrap (S3 buckets & DynamoDB locks)
 ├── observability/
-│   ├── prometheus/                # Scrape configs and alert rules
-│   ├── alertmanager/              # Alert routing configuration
-│   └── grafana/                   # Provisioned telemetry dashboards
+│   ├── prometheus/                # Scrape configurations & latency alert rules
+│   ├── alertmanager/              # Alert notification and routing specs
+│   └── grafana/                   # Pre-provisioned Grafana dashboards & datasources
 ├── scripts/
 │   ├── setup-local.ps1            # Windows automated launch script
-│   └── setup-local.sh             # Linux/macOS launch script
-├── docker-compose.yml             # Local orchestration stack
+│   └── setup-local.sh             # Linux/macOS automated launch script
+├── docker-compose.yml             # Local multi-tier container orchestration
 ├── Makefile                       # Developer command shortcuts
-└── README.md
-```
-
----
-
-## ⚡ Quickstart (100% Free Local Run)
-
-### Prerequisites
-* Docker Desktop & Docker Compose
-* Git
-
-### 1. Launch the Stack
-Clone the repository and run the setup script:
-
-```bash
-# Windows PowerShell
-.\scripts\setup-local.ps1
-
-# Linux / macOS
-./scripts/setup-local.sh
-```
-
-Or using Docker Compose directly:
-```bash
-docker-compose up -d --build
-```
-
-### 2. Verify Endpoints
-| Component | Local URL | Description |
-| :--- | :--- | :--- |
-| **Microservice API** | http://localhost:8000 | Core REST Service |
-| **Interactive API Docs**| http://localhost:8000/api/docs | Swagger UI Documentation |
-| **Liveness Probe** | http://localhost:8000/healthz | Kubernetes Health Check |
-| **Readiness Probe** | http://localhost:8000/readyz | Checks Redis Dependency |
-| **Prometheus Metrics**| http://localhost:8000/metrics | Scraped by Prometheus |
-| **LocalStack AWS** | http://localhost:4566 | Mocked AWS Services |
-
----
-
-## ☁️ Zero-Cost Infrastructure as Code (Terraform)
-
-Deploy the AWS VPC, S3, and IAM architecture to LocalStack without generating cloud bills:
-
-```bash
-cd terraform/environments/local
-terraform init
-terraform plan
-terraform apply -auto-approve
-```
-
-To switch to production AWS, simply navigate to `terraform/environments/aws` and configure your AWS credentials.
-
----
-
-## ☸️ Kubernetes & Helm Deployment
-
-Deploy to Minikube, Kind, or Docker Desktop Kubernetes:
-
-```bash
-# Apply raw Kubernetes manifests
-kubectl apply -f k8s/
-
-# Or deploy using the Helm chart
-helm upgrade --install nexus-release charts/nexus-platform \
-  --namespace nexus-cloudops \
-  --create-namespace
+├── .gitattributes                 # Cross-platform LF line-ending enforcement
+└── README.md                      # Platform documentation & operations manual
 ```
 
 ---
 
 ## 🛡️ DevSecOps CI/CD Pipeline
 
-The `.github/workflows/ci.yml` pipeline runs automatically on pull requests and pushes to `main`:
-1. **Code Quality:** Flake8 and Black code formatting checks.
-2. **Automated Testing:** Pytest unit and integration test coverage.
-3. **Security Vulnerability Scanning:** Aqua Security Trivy scans the repo and IaC for CVEs, exposed credentials, and misconfigurations.
-4. **Container Build & Security:** Builds multi-stage Docker image and executes image vulnerability inspection.
-5. **Helm Validation:** `helm lint` and `helm template` dry-run validation.
+The `.github/workflows/ci.yml` pipeline triggers automatically on every push or pull request to `main`:
+
+```mermaid
+flowchart LR
+    A[1. Code Quality] -->|Flake8 & Black| B[2. Automated Tests]
+    B -->|Pytest + Coverage| C[3. Security Scan]
+    C -->|Trivy Vulnerability & Secret Scan| D[4. Multi-Stage Build]
+    D -->|Docker Buildx + Trivy Image Scan| E[5. Helm Validation]
+    E -->|Helm Lint & Template Dry-Run| F([✅ Ready for Deployment])
+
+    classDef pass fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff;
+    class A,B,C,D,E,F pass;
+```
+
+1. **Stage 1: Code Quality & Linting** — Enforces PEP8 compliance using `flake8` and verifies code formatting with `black`.
+2. **Stage 2: Automated Testing** — Runs `pytest` with code coverage reports, validating endpoint logic, error handlers, and caching.
+3. **Stage 3: DevSecOps Vulnerability & Secret Scan** — **Aqua Security Trivy** scans the entire codebase and IaC manifests for hardcoded secrets, misconfigurations, and CVEs.
+4. **Stage 4: Container Build & Image Scan** — Builds the multi-stage Docker container via `buildx` and scans the resulting image layers for `HIGH` and `CRITICAL` vulnerabilities.
+5. **Stage 5: Helm Chart Validation** — Executes `helm lint` and `helm template` dry-runs to ensure Kubernetes deployment packages are syntactically sound.
 
 ---
 
-## 🚀 Key Architecture & Production Capabilities
+## ☸️ Production Kubernetes & Helm Engineering
 
-* **Environment Parity & Zero Cost:** Modular Terraform supporting LocalStack for $0 local emulation and seamless transition to production AWS (VPC, Subnets, IAM, S3).
-* **Production Kubernetes Orchestration:** Native manifests and parameterized Helm chart featuring Horizontal Pod Autoscaling (HPA), zero-downtime rolling updates (`maxSurge: 1`, `maxUnavailable: 0`), and separate `/healthz` and `/readyz` probes.
-* **Hardened DevSecOps Automation:** GitHub Actions CI/CD integrating automated unit testing, Aqua Security Trivy vulnerability scanning, and Docker multi-stage builds.
-* **Telemetry & Observability:** Prometheus metric scrapers capturing service throughput, p95 latency histograms, custom error alerts, and Grafana telemetry dashboards.
+The platform's Kubernetes architecture follows strict production best practices:
+
+* **Zero-Downtime Rolling Updates:**
+  ```yaml
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  ```
+* **Process Isolation & Non-Root Sandboxing:**
+  Containers run as an unprivileged user (`UID 10001`, `GID 10001`) with read-only root filesystems where appropriate, disallowing privilege escalation.
+* **Intelligent Probe Separation:**
+  * **Liveness Probe (`/healthz`):** Verifies that the FastAPI process is responsive. If unresponsive, kubelet restarts the container.
+  * **Readiness Probe (`/readyz`):** Verifies that downstream dependencies (Redis) are active. If Redis is down, traffic routing stops without terminating the pod.
+* **Autoscaling (HPA):**
+  Scales pods dynamically from **2 to 10 replicas** when cluster CPU utilization exceeds **70%**.
+
+---
+
+## ☁️ Zero-Cost Infrastructure as Code (Terraform)
+
+The Terraform configuration uses a clean modular structure supporting dual deployment targets:
+
+```bash
+# 1. Navigate to the LocalStack zero-cost environment
+cd terraform/environments/local
+
+# 2. Initialize Terraform providers
+terraform init
+
+# 3. Preview infrastructure execution plan
+terraform plan
+
+# 4. Provision VPC, S3 Buckets, and IAM policies ($0.00 cost)
+terraform apply -auto-approve
+```
+
+> **Seamless AWS Transition:** To deploy the exact same architecture to AWS EKS in production, simply switch to `terraform/environments/aws` and apply. No application refactoring is required.
+
+---
+
+## ⚡ Quickstart Guide
+
+### Option 1: Live Cloud Demo (Instant)
+Access the live production deployment hosted 24/7 on Render:
+* **Interactive Swagger UI:** [https://nexus-cloudops-platform.onrender.com/api/docs](https://nexus-cloudops-platform.onrender.com/api/docs)
+* **Liveness Probe:** [https://nexus-cloudops-platform.onrender.com/healthz](https://nexus-cloudops-platform.onrender.com/healthz)
+
+---
+
+### Option 2: Local Docker Compose (Full Stack)
+
+#### Prerequisites
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed & running
+* Git
+
+#### 1. Clone & Start the Stack
+```bash
+git clone https://github.com/devop-jigyasa/nexus-cloudops-platform.git
+cd nexus-cloudops-platform
+
+# Spin up FastAPI, Redis, and LocalStack in background
+docker compose up --build -d
+```
+
+#### 2. Verify Running Containers
+```bash
+docker ps
+```
+
+#### 3. Access Local Endpoints
+| Component | Local URL | Description |
+| :--- | :--- | :--- |
+| **Interactive API Documentation** | `http://localhost:8000/api/docs` | Swagger UI documentation & live testing |
+| **Liveness Probe** | `http://localhost:8000/healthz` | Kubernetes process responsiveness probe |
+| **Readiness Probe** | `http://localhost:8000/readyz` | Verifies Redis in-memory connectivity |
+| **Prometheus Telemetry** | `http://localhost:8000/metrics` | Real-time SRE metrics scrape endpoint |
+| **LocalStack AWS Mock** | `http://localhost:4566` | S3, DynamoDB, IAM mock cloud engine |
+
+#### 4. Stop the Stack Cleanly
+```bash
+docker compose down
+```
+
+---
+
+## 📊 Observability & SRE Metrics
+
+The platform integrates native Prometheus instrumentation:
+* **`http_requests_total`:** Monitored by HTTP method, path, and response status code.
+* **`http_request_duration_seconds`:** Quantile latency histograms tracking p50, p90, and p99 SLA thresholds.
+* **`active_connections`:** Real-time concurrency tracking gauge.
+* **Pre-configured Grafana Dashboard:** Visualizes service throughput, error rate percentages, and memory consumption.
+
+---
+
+## 🧪 Testing & Validation Commands
+
+```bash
+# Run unit & integration test suite
+pytest app/tests/ -v
+
+# Run linting checks
+flake8 app/src app/tests
+
+# Validate Helm chart packaging
+helm lint charts/nexus-platform
+
+# Run Trivy security scan locally
+trivy fs .
+```
+
+---
+
+## 👤 Author & Engineering Profile
+
+**Jigyasa**  
+*Cloud & DevSecOps Platform Engineer*
+
+* **GitHub:** [@devop-jigyasa](https://github.com/devop-jigyasa)
+* **Project Repository:** [nexus-cloudops-platform](https://github.com/devop-jigyasa/nexus-cloudops-platform)
+* **Live Deployment:** [nexus-cloudops-platform.onrender.com](https://nexus-cloudops-platform.onrender.com/api/docs)
 
 ---
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for complete details.
