@@ -1,6 +1,6 @@
 fastapi==0.110.0
 uvicorn[standard]==0.29.0
 redis==5.0.3
-prometheus-client==0.20.0
+prometheus-client==0.26.0
 pydantic==2.6.4
 pydantic-settings==2.2.1
