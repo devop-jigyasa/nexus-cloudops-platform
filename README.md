@@ -58,32 +58,38 @@ In standard industry environments, validating cloud infrastructure and testing d
 
 ```mermaid
 flowchart TD
-    subgraph Traffic["🌐 Edge & Ingress Layer"]
-        User([HTTP Traffic]) --> Ingress[NGINX Ingress Controller]
+    subgraph Traffic ["🌐 Edge & Ingress Layer"]
+        User(["HTTP Traffic"]) --> Ingress["NGINX Ingress Controller"]
     end
 
-    subgraph K8s["☸️ Kubernetes Cluster (EKS / Minikube / Kind)"]
-        Ingress --> K8sSvc[ClusterIP Service: nexus-app-service:80]
-        K8sSvc --> HPA[Horizontal Pod Autoscaler (2-10 Replicas)]
-        HPA --> Pod1[Nexus Pod 1<br/>UID: 10001]
-        HPA --> Pod2[Nexus Pod 2<br/>UID: 10001]
-        HPA --> PodN[Nexus Pod N<br/>UID: 10001]
+    subgraph K8s ["☸️ Kubernetes Cluster (EKS / Minikube / Kind)"]
+        Ingress --> K8sSvc["ClusterIP Service: nexus-app-service:80"]
+        K8sSvc --> HPA["Horizontal Pod Autoscaler (2 to 10 Replicas)"]
+        HPA --> Pod1["Nexus Pod 1 (UID: 10001)"]
+        HPA --> Pod2["Nexus Pod 2 (UID: 10001)"]
+        HPA --> PodN["Nexus Pod N (UID: 10001)"]
     end
 
-    subgraph State["💾 State & Cloud Storage Layer"]
-        Pod1 & Pod2 & PodN --> Redis[(Redis 7 In-Memory Cache<br/>Sub-millisecond Latency)]
-        Pod1 & Pod2 & PodN --> CloudStore[(LocalStack / AWS S3 & DynamoDB<br/>Remote State & Lock Table)]
+    subgraph State ["💾 State & Cloud Storage Layer"]
+        Pod1 --> Redis[("Redis 7 In-Memory Cache (Sub-ms Latency)")]
+        Pod2 --> Redis
+        PodN --> Redis
+        Pod1 --> CloudStore[("LocalStack / AWS S3 & DynamoDB")]
+        Pod2 --> CloudStore
+        PodN --> CloudStore
     end
 
-    subgraph Observability["📊 Telemetry & Observability Stack"]
-        Prometheus[Prometheus Server] -.->|Scrapes /metrics @ 15s| Pod1 & Pod2 & PodN
-        Prometheus --> Alertmanager[Alertmanager Routing Engine]
-        Grafana[Grafana Visualization] -->|PromQL Queries| Prometheus
+    subgraph Observability ["📊 Telemetry & Observability Stack"]
+        Prometheus["Prometheus Server"] -.->|Scrapes /metrics @ 15s| Pod1
+        Prometheus -.->|Scrapes /metrics @ 15s| Pod2
+        Prometheus -.->|Scrapes /metrics @ 15s| PodN
+        Prometheus --> Alertmanager["Alertmanager Routing Engine"]
+        Grafana["Grafana Visualization"] -->|PromQL Queries| Prometheus
     end
 
-    subgraph DevSecOps["🛡️ DevSecOps CI/CD Automation"]
-        GitPush[Git Push / PR] --> GHA[GitHub Actions Runner]
-        GHA --> Trivy[Trivy Vulnerability Scanner]
+    subgraph DevSecOps ["🛡️ DevSecOps CI/CD Automation"]
+        GitPush["Git Push / PR"] --> GHA["GitHub Actions Runner"]
+        GHA --> Trivy["Aqua Security Trivy Scanner"]
         Trivy -.->|Security Gate: Block CRITICAL/HIGH| K8s
     end
 
