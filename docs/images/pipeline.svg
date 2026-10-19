@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pipeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0e172a"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .pipe-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 22px; fill: #ffffff; letter-spacing: 0.5px; }
+    .pipe-subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 12px; fill: #94a3b8; }
+    .step-num { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 11px; fill: #38bdf8; }
+    .step-name { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #f8fafc; }
+    .step-detail { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 11px; fill: #94a3b8; line-height: 1.4; }
+    .badge { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 9px; fill: #10b981; }
+    .tech-pill { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 10px; fill: #38bdf8; }
+  </style>
+
+  <!-- Container -->
+  <rect width="1050" height="480" rx="16" fill="url(#pipeBg)"/>
+  <rect width="1050" height="480" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Top Header -->
+  <g transform="translate(40, 35)">
+    <rect x="0" y="0" width="125" height="22" rx="11" fill="#2563eb" opacity="0.2"/>
+    <rect x="0" y="0" width="125" height="22" rx="11" fill="none" stroke="#3b82f6" stroke-width="1"/>
+    <text x="62" y="15" font-family="-apple-system, sans-serif" font-weight="700" font-size="10" fill="#60a5fa" text-anchor="middle">GITHUB ACTIONS</text>
+
+    <rect x="135" y="0" width="95" height="22" rx="11" fill="#10b981" opacity="0.2"/>
+    <rect x="135" y="0" width="95" height="22" rx="11" fill="none" stroke="#10b981" stroke-width="1"/>
+    <text x="182" y="15" font-family="-apple-system, sans-serif" font-weight="700" font-size="10" fill="#34d399" text-anchor="middle">STATUS: PASSING</text>
+
+    <text x="0" y="52" class="pipe-title">DEVSECOPS CI/CD AUTOMATED PIPELINE</text>
+    <text x="0" y="72" class="pipe-subtitle">AUTOMATED QUALITY, RELIABILITY, SECURITY, CONTAINERIZATION &amp; DELIVERY GATES</text>
+    
+    <line x1="0" y1="84" x2="970" y2="84" stroke="#1e293b" stroke-width="1"/>
+  </g>
+
+  <!-- Trigger Event Pill -->
+  <g transform="translate(40, 135)">
+    <rect width="130" height="50" rx="8" fill="#131e36" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="15" y="22" class="step-num">TRIGGER EVENT</text>
+    <text x="15" y="40" font-family="-apple-system, sans-serif" font-weight="700" font-size="12" fill="#fff">git push / PR ➔ main</text>
+  </g>
+
+  <!-- Connection Line -->
+  <path d="M 170,160 L 200,160" stroke="#3b82f6" stroke-width="2.5"/>
+  <polygon points="200,160 193,156 193,164" fill="#3b82f6"/>
+
+  <!-- 5 PIPELINE STAGE CARDS (Side-by-side or Grid) -->
+  <!-- Stage 1 -->
+  <g transform="translate(200, 105)">
+    <rect width="180" height="150" rx="10" fill="url(#cardGrad2)" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="180" height="28" rx="10" fill="#1e293b" opacity="0.6"/>
+    <text x="12" y="19" class="step-num">STAGE 01</text>
+    <rect x="120" y="6" width="48" height="16" rx="4" fill="#10b981" opacity="0.2"/>
+    <text x="144" y="18" class="badge" text-anchor="middle">PASS</text>
+
+    <text x="12" y="48" class="step-name">Code Quality</text>
+    <line x1="12" y1="56" x2="168" y2="56" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="74" class="step-detail">• Flake8 Linting</text>
+    <text x="12" y="92" class="step-detail">• PEP8 Compliance</text>
+    <text x="12" y="110" class="step-detail">• Black Formatting</text>
+    <text x="12" y="132" class="tech-pill">tool: flake8, black</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 380,180 L 400,180" stroke="#10b981" stroke-width="2"/>
+  <polygon points="400,180 393,176 393,184" fill="#10b981"/>
+
+  <!-- Stage 2 -->
+  <g transform="translate(400, 105)">
+    <rect width="180" height="150" rx="10" fill="url(#cardGrad2)" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="180" height="28" rx="10" fill="#1e293b" opacity="0.6"/>
+    <text x="12" y="19" class="step-num">STAGE 02</text>
+    <rect x="120" y="6" width="48" height="16" rx="4" fill="#10b981" opacity="0.2"/>
+    <text x="144" y="18" class="badge" text-anchor="middle">PASS</text>
+
+    <text x="12" y="48" class="step-name">Automated Tests</text>
+    <line x1="12" y1="56" x2="168" y2="56" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="74" class="step-detail">• Pytest Execution</text>
+    <text x="12" y="92" class="step-detail">• Mock Redis Harness</text>
+    <text x="12" y="110" class="step-detail">• Coverage Telemetry</text>
+    <text x="12" y="132" class="tech-pill">tool: pytest, cov</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 580,180 L 600,180" stroke="#10b981" stroke-width="2"/>
+  <polygon points="600,180 593,176 593,184" fill="#10b981"/>
+
+  <!-- Stage 3 -->
+  <g transform="translate(600, 105)">
+    <rect width="190" height="150" rx="10" fill="url(#cardGrad2)" stroke="#f43f5e" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="190" height="28" rx="10" fill="#f43f5e" opacity="0.15"/>
+    <text x="12" y="19" class="step-num" fill="#fb7185">STAGE 03 • SECURITY</text>
+    <rect x="130" y="6" width="48" height="16" rx="4" fill="#10b981" opacity="0.2"/>
+    <text x="154" y="18" class="badge" text-anchor="middle">0 CVE</text>
+
+    <text x="12" y="48" class="step-name">Trivy DevSecOps</text>
+    <line x1="12" y1="56" x2="178" y2="56" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="74" class="step-detail">• Filesystem CVE Scan</text>
+    <text x="12" y="92" class="step-detail">• Secrets Detection</text>
+    <text x="12" y="110" class="step-detail">• Terraform IaC Audit</text>
+    <text x="12" y="132" class="tech-pill" fill="#fb7185">block: CRITICAL/HIGH</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 790,180 L 810,180" stroke="#10b981" stroke-width="2"/>
+  <polygon points="810,180 803,176 803,184" fill="#10b981"/>
+
+  <!-- Stage 4 -->
+  <g transform="translate(810, 105)">
+    <rect width="190" height="150" rx="10" fill="url(#cardGrad2)" stroke="#38bdf8" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="190" height="28" rx="10" fill="#1e293b" opacity="0.6"/>
+    <text x="12" y="19" class="step-num">STAGE 04</text>
+    <rect x="130" y="6" width="48" height="16" rx="4" fill="#10b981" opacity="0.2"/>
+    <text x="154" y="18" class="badge" text-anchor="middle">PASS</text>
+
+    <text x="12" y="48" class="step-name">Docker Hardening</text>
+    <line x1="12" y1="56" x2="178" y2="56" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="74" class="step-detail">• Multi-Stage Build</text>
+    <text x="12" y="92" class="step-detail">• Non-Root (UID 10001)</text>
+    <text x="12" y="110" class="step-detail">• Image Vulnerability Scan</text>
+    <text x="12" y="132" class="tech-pill">tool: buildx, trivy</text>
+  </g>
+
+  <!-- SECOND ROW: STAGE 5 & 6 (DELIVERY) -->
+  <!-- Down Arrow from Stage 4 to Row 2 -->
+  <path d="M 905,255 L 905,285 L 600,285 L 600,310" stroke="#a855f7" stroke-width="2" stroke-dasharray="4"/>
+  <polygon points="600,315 596,307 604,307" fill="#a855f7"/>
+
+  <!-- Stage 5: Helm Validation -->
+  <g transform="translate(390, 315)">
+    <rect width="250" height="125" rx="10" fill="url(#cardGrad2)" stroke="#38bdf8" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="250" height="28" rx="10" fill="#1e293b" opacity="0.6"/>
+    <text x="12" y="19" class="step-num">STAGE 05 • KUBERNETES PACKAGING</text>
+    <rect x="190" y="6" width="48" height="16" rx="4" fill="#10b981" opacity="0.2"/>
+    <text x="214" y="18" class="badge" text-anchor="middle">VALID</text>
+
+    <text x="12" y="48" class="step-name">☸️ Helm Chart Validation</text>
+    <line x1="12" y1="56" x2="238" y2="56" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="74" class="step-detail">• helm lint charts/nexus-platform</text>
+    <text x="12" y="90" class="step-detail">• helm template dry-run manifest render</text>
+    <text x="12" y="110" class="tech-pill">k8s schema conformance verified</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 640,375 L 680,375" stroke="#10b981" stroke-width="2.5"/>
+  <polygon points="680,375 672,370 672,380" fill="#10b981"/>
+
+  <!-- Stage 6: Deployment Ready -->
+  <g transform="translate(680, 315)">
+    <rect width="320" height="125" rx="10" fill="#062e24" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="320" height="28" rx="10" fill="#10b981" opacity="0.2"/>
+    <text x="15" y="19" class="step-num" fill="#34d399">STAGE 06 • PRODUCTION DELIVERY</text>
+    <rect x="245" y="6" width="60" height="16" rx="4" fill="#10b981"/>
+    <text x="275" y="18" font-family="-apple-system, sans-serif" font-weight="700" font-size="9" fill="#fff" text-anchor="middle">DEPLOYED</text>
+
+    <text x="15" y="48" class="step-name" fill="#34d399">🚀 Zero-Downtime Release</text>
+    <line x1="15" y1="56" x2="305" y2="56" stroke="#047857" stroke-width="1"/>
+    <text x="15" y="74" class="step-detail" fill="#a7f3d0">• Live Cloud Environment (Render.com)</text>
+    <text x="15" y="90" class="step-detail" fill="#a7f3d0">• Production EKS Cluster Parity (Terraform)</text>
+    <text x="15" y="110" class="tech-pill" fill="#6ee7b7">url: nexus-cloudops-platform.onrender.com</text>
+  </g>
+
+  <!-- Left Callout Box for CI Metrics -->
+  <g transform="translate(40, 315)">
+    <rect width="320" height="125" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="15" y="24" class="step-name">⚡ Pipeline Performance SLA</text>
+    <line x1="15" y1="34" x2="305" y2="34" stroke="#334155" stroke-width="1"/>
+    <text x="15" y="54" class="step-detail">• Total Execution Time: ~2m 45s</text>
+    <text x="15" y="72" class="step-detail">• Vulnerability Threshold: 0 CRITICAL / 0 HIGH</text>
+    <text x="15" y="90" class="step-detail">• Image Footprint: Distroless-style multi-stage</text>
+    <text x="15" y="108" class="step-detail">• Automated Rollback on Probe Failure</text>
+  </g>
+</svg>

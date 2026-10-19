@@ -56,6 +56,13 @@ In standard industry environments, validating cloud infrastructure and testing d
 
 ## 🏗️ System Architecture
 
+<p align="center">
+  <img src="docs/images/architecture.svg" alt="Nexus CloudOps System Architecture Blueprint" width="100%"/>
+</p>
+
+<details>
+<summary><b>🔍 Click to inspect interactive Mermaid Architecture Source Code</b></summary>
+
 ```mermaid
 flowchart TD
     subgraph Traffic ["🌐 Edge & Ingress Layer"]
@@ -103,6 +110,7 @@ flowchart TD
     class Prometheus,Grafana accent;
     class Trivy,GHA security;
 ```
+</details>
 
 ---
 
@@ -167,6 +175,13 @@ nexus-cloudops-platform/
 
 The `.github/workflows/ci.yml` pipeline triggers automatically on every push or pull request to `main`, enforcing automated quality, testing, security, and packaging gates:
 
+<p align="center">
+  <img src="docs/images/pipeline.svg" alt="DevSecOps CI/CD Automated Pipeline Architecture" width="100%"/>
+</p>
+
+<details>
+<summary><b>🔍 Click to inspect interactive Mermaid Pipeline Flowchart</b></summary>
+
 ```mermaid
 flowchart TD
     subgraph Stage1 ["Stage 1: Code Quality & Linting"]
@@ -201,6 +216,7 @@ flowchart TD
     class A,B,C,D,E card;
     class F success;
 ```
+</details>
 
 ### DevSecOps Pipeline Stage Matrix
 

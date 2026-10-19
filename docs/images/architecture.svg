@@ -1,0 +1,329 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 720" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0e172a"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </linearGradient>
+
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <linearGradient id="k8sGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#4facfe"/>
+    </linearGradient>
+
+    <linearGradient id="accentGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="accentPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <linearGradient id="accentOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="accentRose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+
+    <filter id="glowBlue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 26px; fill: #ffffff; letter-spacing: 1px; }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 13px; fill: #94a3b8; letter-spacing: 0.5px; }
+    .badge-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 10px; fill: #ffffff; }
+    .section-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 13px; fill: #38bdf8; text-transform: uppercase; letter-spacing: 1px; }
+    .card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 14px; fill: #f8fafc; }
+    .card-subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 11px; fill: #38bdf8; }
+    .card-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 11px; fill: #94a3b8; }
+    .card-code { font-family: 'JetBrains Mono', Consolas, Monaco, monospace; font-size: 10px; fill: #00f2fe; }
+    .flow-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 10px; fill: #cbd5e1; }
+    .port-badge { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 9px; fill: #f59e0b; font-weight: bold; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1050" height="720" rx="16" fill="url(#bgGradient)"/>
+  <rect width="1050" height="720" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Subtle Blueprint Grid -->
+  <g opacity="0.06">
+    <path d="M 0,60 L 1050,60 M 0,120 L 1050,120 M 0,180 L 1050,180 M 0,240 L 1050,240 M 0,300 L 1050,300 M 0,360 L 1050,360 M 0,420 L 1050,420 M 0,480 L 1050,480 M 0,540 L 1050,540 M 0,600 L 1050,600 M 0,660 L 1050,660" stroke="#38bdf8" stroke-width="1"/>
+    <path d="M 60,0 L 60,720 M 120,0 L 120,720 M 180,0 L 180,720 M 240,0 L 240,720 M 300,0 L 300,720 M 360,0 L 360,720 M 420,0 L 420,720 M 480,0 L 480,720 M 540,0 L 540,720 M 600,0 L 600,720 M 660,0 L 660,720 M 720,0 L 720,720 M 780,0 L 780,720 M 840,0 L 840,720 M 900,0 L 900,720 M 960,0 L 960,720" stroke="#38bdf8" stroke-width="1"/>
+  </g>
+
+  <!-- HEADER -->
+  <g transform="translate(40, 35)">
+    <!-- Tech Stack Pill Badges -->
+    <rect x="0" y="0" width="110" height="24" rx="12" fill="#2563eb" opacity="0.2"/>
+    <rect x="0" y="0" width="110" height="24" rx="12" fill="none" stroke="#3b82f6" stroke-width="1"/>
+    <text x="55" y="16" class="badge-text" text-anchor="middle" fill="#60a5fa">☸️ KUBERNETES</text>
+
+    <rect x="120" y="0" width="110" height="24" rx="12" fill="#844fba" opacity="0.2"/>
+    <rect x="120" y="0" width="110" height="24" rx="12" fill="none" stroke="#a855f7" stroke-width="1"/>
+    <text x="175" y="16" class="badge-text" text-anchor="middle" fill="#c084fc">🏗️ TERRAFORM</text>
+
+    <rect x="240" y="0" width="105" height="24" rx="12" fill="#00d2b4" opacity="0.2"/>
+    <rect x="240" y="0" width="105" height="24" rx="12" fill="none" stroke="#00d2b4" stroke-width="1"/>
+    <text x="292" y="16" class="badge-text" text-anchor="middle" fill="#2dd4bf">☁️ LOCALSTACK</text>
+
+    <rect x="355" y="0" width="110" height="24" rx="12" fill="#ff6b6b" opacity="0.2"/>
+    <rect x="355" y="0" width="110" height="24" rx="12" fill="none" stroke="#f43f5e" stroke-width="1"/>
+    <text x="410" y="16" class="badge-text" text-anchor="middle" fill="#fb7185">🛡️ DEVSECOPS</text>
+
+    <rect x="475" y="0" width="125" height="24" rx="12" fill="#e6522c" opacity="0.2"/>
+    <rect x="475" y="0" width="125" height="24" rx="12" fill="none" stroke="#fb923c" stroke-width="1"/>
+    <text x="537" y="16" class="badge-text" text-anchor="middle" fill="#fdba74">📊 OBSERVABILITY</text>
+
+    <!-- Main Title -->
+    <text x="0" y="58" class="title">NEXUS CLOUDOPS PLATFORM</text>
+    <text x="0" y="78" class="subtitle">ENTERPRISE-GRADE CLOUD ARCHITECTURE, DEVSECOPS PIPELINE &amp; OBSERVABILITY BLUEPRINT</text>
+
+    <line x1="0" y1="92" x2="970" y2="92" stroke="#1e293b" stroke-width="1"/>
+  </g>
+
+  <!-- COLUMN 1: EDGE & INGRESS (X: 40) -->
+  <g transform="translate(40, 145)">
+    <!-- Zone Container -->
+    <rect width="180" height="390" rx="12" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+    <rect x="0" y="0" width="180" height="36" rx="12" fill="#1e293b" opacity="0.5"/>
+    <text x="15" y="23" class="section-title">🌐 1. Edge &amp; Ingress</text>
+
+    <!-- Client Box -->
+    <g transform="translate(15, 55)">
+      <rect width="150" height="65" rx="8" fill="url(#cardGrad)" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
+      <circle cx="25" cy="25" r="10" fill="#3b82f6" opacity="0.3"/>
+      <text x="25" y="29" font-size="12" text-anchor="middle">👥</text>
+      <text x="45" y="25" class="card-title">External Traffic</text>
+      <text x="45" y="42" class="card-body">HTTPS / TLS 1.3</text>
+      <text x="45" y="55" class="card-code">GET / POST / HEAD</text>
+    </g>
+
+    <!-- Arrow Down -->
+    <path d="M 90,120 L 90,150" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow)"/>
+    <polygon points="90,155 86,147 94,147" fill="#38bdf8"/>
+
+    <!-- Ingress Controller Card -->
+    <g transform="translate(15, 160)">
+      <rect width="150" height="110" rx="8" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <text x="15" y="25" class="card-title">NGINX Ingress</text>
+      <text x="15" y="42" class="card-subtitle">Layer 7 Routing</text>
+      <line x1="15" y1="50" x2="135" y2="50" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="66" class="card-body">• /api/v1/* ➔ Service</text>
+      <text x="15" y="82" class="card-body">• /healthz ➔ Probes</text>
+      <text x="15" y="98" class="card-body">• /metrics ➔ PromQL</text>
+    </g>
+
+    <!-- SSL Offload Badge -->
+    <g transform="translate(15, 290)">
+      <rect width="150" height="85" rx="8" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1" opacity="0.9"/>
+      <text x="15" y="25" class="card-title">🛡️ Security Gateway</text>
+      <text x="15" y="45" class="card-body">• Rate Limiting (100r/s)</text>
+      <text x="15" y="62" class="card-body">• CORS Protection</text>
+      <text x="15" y="76" class="card-body">• Header Sanitization</text>
+    </g>
+  </g>
+
+  <!-- COLUMN 2: KUBERNETES RUNTIME (X: 250) -->
+  <g transform="translate(250, 145)">
+    <!-- Kubernetes Zone Container -->
+    <rect width="380" height="390" rx="12" fill="#0b1329" stroke="#0284c7" stroke-width="1.5"/>
+    <rect x="0" y="0" width="380" height="36" rx="12" fill="#0369a1" opacity="0.3"/>
+    <text x="20" y="23" class="section-title">☸️ 2. Production Kubernetes Cluster (EKS / Local)</text>
+    <rect x="300" y="8" width="65" height="20" rx="10" fill="#0284c7"/>
+    <text x="332" y="22" class="badge-text" text-anchor="middle">HPA 70%</text>
+
+    <!-- K8s Service Card -->
+    <g transform="translate(20, 50)">
+      <rect width="340" height="60" rx="8" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1"/>
+      <text x="15" y="24" class="card-title">K8s Service: nexus-app-service</text>
+      <text x="15" y="42" class="card-body">Type: ClusterIP • Internal Load Balancing • Port: 80 ➔ 8000</text>
+      <rect x="260" y="12" width="65" height="18" rx="4" fill="#0284c7" opacity="0.3"/>
+      <text x="292" y="25" class="card-code" text-anchor="middle">port: 80</text>
+    </g>
+
+    <!-- Pod 1 -->
+    <g transform="translate(20, 125)">
+      <rect width="340" height="75" rx="8" fill="#131e36" stroke="#2563eb" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <circle cx="20" cy="22" r="6" fill="#10b981"/>
+      <text x="35" y="26" class="card-title">nexus-pod-01</text>
+      <rect x="235" y="12" width="90" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="280" y="25" class="badge-text" text-anchor="middle" fill="#34d399">READY (1/1)</text>
+      
+      <text x="15" y="46" class="card-body">• Runtime: Python 3.11 FastAPI (Uvicorn 2 Workers)</text>
+      <text x="15" y="64" class="card-body">• Security: Non-Root (UID 10001) | Limits: 250m CPU, 256Mi RAM</text>
+    </g>
+
+    <!-- Pod 2 -->
+    <g transform="translate(20, 210)">
+      <rect width="340" height="75" rx="8" fill="#131e36" stroke="#2563eb" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <circle cx="20" cy="22" r="6" fill="#10b981"/>
+      <text x="35" y="26" class="card-title">nexus-pod-02</text>
+      <rect x="235" y="12" width="90" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="280" y="25" class="badge-text" text-anchor="middle" fill="#34d399">READY (1/1)</text>
+      
+      <text x="15" y="46" class="card-body">• Runtime: Python 3.11 FastAPI (Uvicorn 2 Workers)</text>
+      <text x="15" y="64" class="card-body">• Security: Non-Root (UID 10001) | Limits: 250m CPU, 256Mi RAM</text>
+    </g>
+
+    <!-- Pod Autoscaling Replica Indicator -->
+    <g transform="translate(20, 295)">
+      <rect width="340" height="78" rx="8" fill="#0f172a" stroke="#334155" stroke-dasharray="4" stroke-width="1"/>
+      <text x="15" y="24" class="card-subtitle">⚡ Horizontal Pod Autoscaler (HPA)</text>
+      <text x="15" y="44" class="card-body">Dynamic Scale: Min 2 Pods ➔ Max 10 Pods on CPU Spike (&gt; 70%)</text>
+      <text x="15" y="62" class="card-body">RollingUpdate Policy: maxSurge=1, maxUnavailable=0 (Zero Downtime)</text>
+    </g>
+  </g>
+
+  <!-- COLUMN 3: STATE & DATA LAYER (X: 660) -->
+  <g transform="translate(660, 145)">
+    <!-- State Zone Container -->
+    <rect width="350" height="390" rx="12" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+    <rect x="0" y="0" width="350" height="36" rx="12" fill="#1e293b" opacity="0.5"/>
+    <text x="20" y="23" class="section-title">💾 3. State &amp; Storage Layer</text>
+
+    <!-- Redis Container -->
+    <g transform="translate(20, 50)">
+      <rect width="310" height="105" rx="8" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <text x="15" y="25" class="card-title">⚡ Redis 7.2 In-Memory Cache</text>
+      <text x="15" y="42" class="card-subtitle">Sub-millisecond State Storage</text>
+      <line x1="15" y1="50" x2="295" y2="50" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="68" class="card-body">• Port: 6379 (Isolated Bridge Network)</text>
+      <text x="15" y="84" class="card-body">• Eviction: Volatile-LRU | Persistent Volume Mount</text>
+      <text x="15" y="98" class="card-body">• Healthcheck: redis-cli ping (5s interval)</text>
+    </g>
+
+    <!-- LocalStack / AWS S3 & DynamoDB -->
+    <g transform="translate(20, 170)">
+      <rect width="310" height="120" rx="8" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <text x="15" y="25" class="card-title">☁️ LocalStack AWS Cloud Parity</text>
+      <text x="15" y="42" class="card-subtitle">Dual-Target $0.00 Emulation</text>
+      <line x1="15" y1="50" x2="295" y2="50" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="68" class="card-body">• S3: s3://nexus-platform-artifacts</text>
+      <text x="15" y="84" class="card-body">• S3 Backend: s3://nexus-terraform-state-backend</text>
+      <text x="15" y="100" class="card-body">• DynamoDB: nexus-terraform-locks (State Lock)</text>
+      <text x="15" y="114" class="card-body">• IAM / STS / VPC / Subnet Parity (Port 4566)</text>
+    </g>
+
+    <!-- Observability Box (Prometheus & Grafana) -->
+    <g transform="translate(20, 305)">
+      <rect width="310" height="70" rx="8" fill="url(#cardGrad)" stroke="#e11d48" stroke-width="1.5" filter="url(#cardShadow)"/>
+      <text x="15" y="23" class="card-title">📊 Prometheus &amp; Grafana Telemetry</text>
+      <text x="15" y="42" class="card-body">• Scrapes /metrics every 15s (RED metrics)</text>
+      <text x="15" y="58" class="card-body">• Grafana Dashboards: p50/p95/p99 Latency &amp; Error %</text>
+    </g>
+  </g>
+
+  <!-- CONNECTING ARROWS BETWEEN LAYERS -->
+  <!-- Ingress to K8s Service -->
+  <path d="M 220,225 L 270,225" stroke="#00f2fe" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+  <polygon points="270,225 260,220 260,230" fill="#00f2fe"/>
+
+  <!-- K8s Pods to Redis -->
+  <path d="M 630,225 L 680,225" stroke="#10b981" stroke-width="2" stroke-dasharray="4"/>
+  <polygon points="680,225 672,221 672,229" fill="#10b981"/>
+
+  <!-- BOTTOM FOOTER: DEVSECOPS CI/CD PIPELINE FLOW -->
+  <g transform="translate(40, 555)">
+    <rect width="970" height="135" rx="12" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect x="0" y="0" width="970" height="30" rx="12" fill="#7c3aed" opacity="0.3"/>
+    <text x="20" y="20" class="section-title" fill="#c084fc">🛡️ DevSecOps Continuous Integration &amp; Automated Delivery Gates</text>
+
+    <!-- 5 Pipeline Steps -->
+    <!-- Step 1 -->
+    <g transform="translate(20, 42)">
+      <rect width="170" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="22" class="card-title" font-size="12">1. Lint &amp; Style</text>
+      <text x="12" y="40" class="card-body">• Flake8 PEP8 Check</text>
+      <text x="12" y="56" class="card-body">• Black Formatter</text>
+      <rect x="110" y="10" width="50" height="16" rx="3" fill="#10b981" opacity="0.2"/>
+      <text x="135" y="22" class="badge-text" text-anchor="middle" fill="#34d399">PASS</text>
+    </g>
+
+    <!-- Arrow -->
+    <polygon points="200,80 194,76 194,84" fill="#a855f7"/>
+
+    <!-- Step 2 -->
+    <g transform="translate(210, 42)">
+      <rect width="170" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="22" class="card-title" font-size="12">2. Unit Tests</text>
+      <text x="12" y="40" class="card-body">• Pytest Suite</text>
+      <text x="12" y="56" class="card-body">• Redis Mock Tests</text>
+      <rect x="110" y="10" width="50" height="16" rx="3" fill="#10b981" opacity="0.2"/>
+      <text x="135" y="22" class="badge-text" text-anchor="middle" fill="#34d399">PASS</text>
+    </g>
+
+    <!-- Arrow -->
+    <polygon points="390,80 384,76 384,84" fill="#a855f7"/>
+
+    <!-- Step 3 -->
+    <g transform="translate(400, 42)">
+      <rect width="175" height="75" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1"/>
+      <text x="12" y="22" class="card-title" font-size="12">3. Trivy Security</text>
+      <text x="12" y="40" class="card-body">• CVE Filesystem Scan</text>
+      <text x="12" y="56" class="card-body">• Secrets &amp; IaC Audit</text>
+      <rect x="115" y="10" width="50" height="16" rx="3" fill="#10b981" opacity="0.2"/>
+      <text x="140" y="22" class="badge-text" text-anchor="middle" fill="#34d399">0 CVE</text>
+    </g>
+
+    <!-- Arrow -->
+    <polygon points="585,80 579,76 579,84" fill="#a855f7"/>
+
+    <!-- Step 4 -->
+    <g transform="translate(595, 42)">
+      <rect width="175" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="22" class="card-title" font-size="12">4. Docker Buildx</text>
+      <text x="12" y="40" class="card-body">• Multi-Stage Build</text>
+      <text x="12" y="56" class="card-body">• UID 10001 Sandboxing</text>
+      <rect x="115" y="10" width="50" height="16" rx="3" fill="#10b981" opacity="0.2"/>
+      <text x="140" y="22" class="badge-text" text-anchor="middle" fill="#34d399">PASS</text>
+    </g>
+
+    <!-- Arrow -->
+    <polygon points="780,80 774,76 774,84" fill="#a855f7"/>
+
+    <!-- Step 5 -->
+    <g transform="translate(790, 42)">
+      <rect width="160" height="75" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+      <text x="12" y="22" class="card-title" font-size="12" fill="#34d399">5. Helm &amp; Deploy</text>
+      <text x="12" y="40" class="card-body">• Helm Lint / Template</text>
+      <text x="12" y="56" class="card-body">• Live Cloud Release</text>
+      <rect x="100" y="10" width="50" height="16" rx="3" fill="#10b981" opacity="0.2"/>
+      <text x="125" y="22" class="badge-text" text-anchor="middle" fill="#34d399">LIVE</text>
+    </g>
+  </g>
+</svg>
