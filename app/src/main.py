@@ -2,7 +2,7 @@ import time
 import socket
 import logging
 from fastapi import FastAPI, Request, Response, status
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 import redis
 from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 
@@ -27,6 +27,12 @@ app = FastAPI(
 SYSTEM_INFO.labels(version=settings.APP_VERSION, environment=settings.ENVIRONMENT).set(
     1
 )
+
+
+@app.get("/", include_in_schema=False)
+async def root():
+    """Redirect root traffic directly to interactive Swagger API documentation."""
+    return RedirectResponse(url="/api/docs")
 
 
 def get_redis_client():

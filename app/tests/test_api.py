@@ -55,3 +55,9 @@ def test_cache_post_success(client, mock_redis):
     response = client.post("/api/v1/cache", json=payload)
     assert response.status_code == status.HTTP_200_OK
     assert response.json()["message"] == "Value stored successfully"
+
+
+def test_root_redirect(client):
+    response = client.get("/", follow_redirects=False)
+    assert response.status_code == status.HTTP_307_TEMPORARY_REDIRECT
+    assert response.headers["location"] == "/api/docs"
