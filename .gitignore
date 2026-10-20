@@ -22,6 +22,8 @@ wheels/
 *.egg
 .pytest_cache/
 .coverage
+coverage.xml
+*.xml
 htmlcov/
 
 # Terraform
