@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus CloudOps Platform // Mission Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z'/></svg>">
+</head>
+<body>
+    <div class="ambient-glow cyan-glow"></div>
+    <div class="ambient-glow violet-glow"></div>
+    <div class="ambient-glow emerald-glow"></div>
+
+    <div class="app-layout">
+        <!-- Top Navigation Bar -->
+        <header class="top-nav">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-title">NEXUS <span class="highlight">CLOUDOPS</span></div>
+                    <div class="brand-subtitle">ENTERPRISE PLATFORM OPERATIONS</div>
+                </div>
+            </div>
+
+            <!-- Deployment & Health Badges -->
+            <div class="nav-badges">
+                <div class="status-pill vercel-pill">
+                    <span class="dot-green"></span>
+                    <span class="pill-label">VERCEL EDGE</span>
+                    <span class="pill-metric">&lt; 50ms</span>
+                </div>
+                
+                <div class="status-pill backend-pill" id="backend-status-pill">
+                    <span class="dot-pulse" id="backend-dot"></span>
+                    <span class="pill-label" id="backend-label">CONNECTING...</span>
+                    <span class="pill-metric" id="backend-latency">-- ms</span>
+                </div>
+
+                <div class="nav-links">
+                    <a href="https://nexus-cloudops-platform.onrender.com/api/docs" target="_blank" class="nav-btn primary-btn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span>API Docs</span>
+                    </a>
+                    <a href="https://github.com/devop-jigyasa/nexus-cloudops-platform" target="_blank" class="nav-btn github-btn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Cold Start Notification Banner (Appears when Render is waking up) -->
+        <div class="cold-start-banner" id="cold-start-banner" style="display: none;">
+            <div class="banner-content">
+                <div class="banner-icon">
+                    <span class="spinner-ring"></span>
+                </div>
+                <div class="banner-text">
+                    <strong>Render Free-Tier Microservice is waking up...</strong>
+                    <span>Because this backend is hosted on Render's zero-cost tier, the container spins down when idle. It takes ~30–45s to wake up. Retrying automatically: <span class="mono" id="retry-timer">5s</span></span>
+                </div>
+                <button class="retry-btn" onclick="checkBackendHealth(true)">Ping Now</button>
+            </div>
+            <div class="cold-start-progress">
+                <div class="progress-bar" id="cold-start-progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard View -->
+        <main class="dashboard-body">
+            <!-- Hero Platform Header -->
+            <section class="hero-section">
+                <div class="hero-badge">ENTERPRISE CLOUD ARCHITECTURE // ZERO CLOUD COST</div>
+                <h1 class="hero-title">Nexus CloudOps Platform</h1>
+                <p class="hero-subtitle">
+                    Production-grade DevSecOps, dual-target Terraform IaC (<span class="mono text-cyan">$0.00 LocalStack</span> ↔ <span class="mono text-indigo">AWS EKS</span>), 
+                    Kubernetes HPA autoscaling, Aqua Trivy container security gates, and native Prometheus telemetry.
+                </p>
+
+                <div class="spec-pills">
+                    <div class="spec-pill"><span class="spec-dot"></span> 100% Terraform IaC</div>
+                    <div class="spec-pill"><span class="spec-dot"></span> Aqua Trivy 0 CVEs</div>
+                    <div class="spec-pill"><span class="spec-dot"></span> HPA 2–10 Pods</div>
+                    <div class="spec-pill"><span class="spec-dot"></span> Redis Sub-ms Latency</div>
+                    <div class="spec-pill"><span class="spec-dot"></span> $2,324/yr FinOps Savings</div>
+                </div>
+            </section>
+
+            <!-- Row 1: KPI Telemetry Cards -->
+            <section class="kpi-grid">
+                <!-- Card 1: Liveness Probe -->
+                <div class="card glass-card kpi-card">
+                    <div class="card-header">
+                        <span class="card-tag">PROBE // LIVENESS</span>
+                        <span class="card-status-badge badge-green" id="liveness-badge">200 OK</span>
+                    </div>
+                    <div class="card-metric" id="liveness-metric">HEALTHY</div>
+                    <div class="card-detail">
+                        <span>Endpoint:</span> <code class="mono">GET /healthz</code>
+                    </div>
+                    <div class="card-footer">
+                        <span>Service:</span> <span class="mono text-cyan" id="liveness-service">nexus-cloudops-service</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Readiness Probe & Redis -->
+                <div class="card glass-card kpi-card">
+                    <div class="card-header">
+                        <span class="card-tag">PROBE // READINESS</span>
+                        <span class="card-status-badge badge-green" id="readiness-badge">READY</span>
+                    </div>
+                    <div class="card-metric" id="readiness-metric">CONNECTED</div>
+                    <div class="card-detail">
+                        <span>Redis In-Memory:</span> <span class="mono text-green" id="redis-status">CONNECTED</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Endpoint:</span> <code class="mono">GET /readyz</code>
+                    </div>
+                </div>
+
+                <!-- Card 3: Node Identity & Runtime -->
+                <div class="card glass-card kpi-card">
+                    <div class="card-header">
+                        <span class="card-tag">RUNTIME // NODE INFO</span>
+                        <span class="card-status-badge badge-cyan" id="version-badge">v1.0.0</span>
+                    </div>
+                    <div class="card-metric mono" id="hostname-metric">render-node</div>
+                    <div class="card-detail">
+                        <span>Environment:</span> <span class="mono text-indigo" id="env-metric">production</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Sandboxing:</span> <span class="mono text-muted">UID 10001 (Non-Root)</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Observability & Telemetry -->
+                <div class="card glass-card kpi-card">
+                    <div class="card-header">
+                        <span class="card-tag">SRE // TELEMETRY</span>
+                        <span class="card-status-badge badge-purple">PROMETHEUS</span>
+                    </div>
+                    <div class="card-metric mono" id="rtt-metric">0.82 ms</div>
+                    <div class="card-detail">
+                        <span>Scrape Interval:</span> <span class="mono text-cyan">15s</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>Metrics Route:</span> <a href="https://nexus-cloudops-platform.onrender.com/metrics" target="_blank" class="mono text-cyan">GET /metrics</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Row 2: Interactive Redis In-Memory Cache Testbench -->
+            <section class="workbench-section">
+                <div class="card glass-card workbench-card">
+                    <div class="workbench-header">
+                        <div class="workbench-title-group">
+                            <div class="workbench-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="workbench-title">Live Redis In-Memory Cache Bench</h3>
+                                <p class="workbench-desc">Test real-time key-value caching against the live Render backend (<code class="mono">POST /api/v1/cache</code> & <code class="mono">GET /api/v1/cache/{key}</code>).</p>
+                            </div>
+                        </div>
+                        <div class="preset-buttons">
+                            <span class="preset-label">Quick Scenarios:</span>
+                            <button class="preset-chip" onclick="loadPreset('cluster_region', 'us-east-1-prod')">Cluster Region</button>
+                            <button class="preset-chip" onclick="loadPreset('hpa_desired_pods', '8-replicas')">HPA Pods</button>
+                            <button class="preset-chip" onclick="loadPreset('finops_savings', '$2,324.88-annual')">FinOps Savings</button>
+                        </div>
+                    </div>
+
+                    <div class="workbench-body">
+                        <!-- Write Key Form -->
+                        <div class="bench-col">
+                            <div class="bench-col-title">
+                                <span class="method-tag tag-post">POST</span> Store Cache Key
+                            </div>
+                            <form id="write-cache-form" onsubmit="handleWriteCache(event)">
+                                <div class="form-group">
+                                    <label>Cache Key</label>
+                                    <input type="text" id="cache-key-input" placeholder="e.g. cluster_region" class="mono-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cache Value</label>
+                                    <input type="text" id="cache-val-input" placeholder="e.g. us-east-1-prod" class="mono-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>TTL (Seconds)</label>
+                                    <input type="number" id="cache-ttl-input" value="3600" class="mono-input">
+                                </div>
+                                <button type="submit" class="bench-btn primary-btn" id="write-btn">
+                                    <span>Set Cache Item</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Read Key Form -->
+                        <div class="bench-col">
+                            <div class="bench-col-title">
+                                <span class="method-tag tag-get">GET</span> Retrieve Cache Key
+                            </div>
+                            <form id="read-cache-form" onsubmit="handleReadCache(event)">
+                                <div class="form-group">
+                                    <label>Target Key</label>
+                                    <input type="text" id="read-key-input" placeholder="e.g. cluster_region" class="mono-input" required>
+                                </div>
+                                <button type="submit" class="bench-btn secondary-btn" id="read-btn">
+                                    <span>Query Redis</span>
+                                </button>
+                            </form>
+
+                            <div class="response-container">
+                                <div class="response-header">
+                                    <span>Execution Telemetry:</span>
+                                    <span class="mono text-cyan" id="bench-rtt">Ready</span>
+                                </div>
+                                <pre class="response-pre mono" id="bench-output">// Click "Set Cache Item" or "Query Redis" to view real-time API response.</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Row 3: Architecture & Engineering Blueprint Viewer -->
+            <section class="viewer-section">
+                <div class="viewer-tabs">
+                    <button class="tab-btn active" onclick="switchTab('arch')">🏗️ System Architecture</button>
+                    <button class="tab-btn" onclick="switchTab('pipeline')">🛡️ DevSecOps CI/CD Pipeline</button>
+                    <button class="tab-btn" onclick="switchTab('reports')">📑 Engineering Audit Reports</button>
+                </div>
+
+                <!-- Tab 1: Architecture -->
+                <div class="tab-content active" id="tab-arch">
+                    <div class="card glass-card diagram-card">
+                        <div class="diagram-header">
+                            <div>
+                                <h4>Cloud-Native Architecture Blueprint</h4>
+                                <p class="text-muted">Edge Ingress, Kubernetes cluster (UID: 10001), Redis in-memory cache, LocalStack $0 AWS parity, and Prometheus telemetry.</p>
+                            </div>
+                            <a href="https://github.com/devop-jigyasa/nexus-cloudops-platform/blob/main/docs/images/architecture.svg" target="_blank" class="diagram-link">View Full SVG ↗</a>
+                        </div>
+                        <div class="diagram-viewport">
+                            <img src="https://raw.githubusercontent.com/devop-jigyasa/nexus-cloudops-platform/main/docs/images/architecture.svg" alt="System Architecture Blueprint" class="diagram-img" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: DevSecOps Pipeline -->
+                <div class="tab-content" id="tab-pipeline">
+                    <div class="card glass-card diagram-card">
+                        <div class="diagram-header">
+                            <div>
+                                <h4>5-Stage Automated DevSecOps CI/CD Pipeline</h4>
+                                <p class="text-muted">Static analysis, unit/coverage gates, Aqua Security Trivy filesystem & container scans, and Helm chart dry-run linting.</p>
+                            </div>
+                            <a href="https://github.com/devop-jigyasa/nexus-cloudops-platform/blob/main/docs/images/pipeline.svg" target="_blank" class="diagram-link">View Full SVG ↗</a>
+                        </div>
+                        <div class="diagram-viewport">
+                            <img src="https://raw.githubusercontent.com/devop-jigyasa/nexus-cloudops-platform/main/docs/images/pipeline.svg" alt="DevSecOps Pipeline Infographic" class="diagram-img" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Audit Reports -->
+                <div class="tab-content" id="tab-reports">
+                    <div class="reports-grid">
+                        <div class="card glass-card report-card">
+                            <div class="report-badge badge-green">PASSED // 0 CVEs</div>
+                            <h4 class="report-title">SEC-2026-01: DevSecOps Security Audit</h4>
+                            <p class="report-desc">Aqua Security Trivy v0.50+ filesystem scan, non-root UID 10001 container sandboxing, Trufflehog secret verification, and CIS AWS Benchmark compliance.</p>
+                            <a href="https://github.com/devop-jigyasa/nexus-cloudops-platform/blob/main/reports/SEC-2026-01-Trivy-DevSecOps-Vulnerability-Audit.md" target="_blank" class="report-btn">Read Certified Audit ↗</a>
+                        </div>
+
+                        <div class="card glass-card report-card">
+                            <div class="report-badge badge-cyan">VERIFIED // 2,482 RPS</div>
+                            <h4 class="report-title">PERF-2026-01: Kubernetes HPA Benchmark</h4>
+                            <p class="report-desc">500,000 synthetic requests load test. Validates Redis sub-ms retrieval (p50: 0.82ms), HPA pod scaling (2 to 10 pods on CPU > 70%), and zero-downtime rolling updates.</p>
+                            <a href="https://github.com/devop-jigyasa/nexus-cloudops-platform/blob/main/reports/PERF-2026-01-Kubernetes-HPA-Load-Benchmark.md" target="_blank" class="report-btn">Read Load Benchmark ↗</a>
+                        </div>
+
+                        <div class="card glass-card report-card">
+                            <div class="report-badge badge-purple">ACCREDITED // $0.00 SPEND</div>
+                            <h4 class="report-title">FINOPS-2026-01: Cloud Parity Analysis</h4>
+                            <p class="report-desc">Financial audit comparing dedicated AWS developer sandboxes ($193.74/mo) against LocalStack dual-target parity ($0.00/mo), proving $2,324.88 annual savings per dev.</p>
+                            <a href="https://github.com/devop-jigyasa/nexus-cloudops-platform/blob/main/reports/FINOPS-2026-01-Zero-Cost-LocalStack-Cloud-Parity-Analysis.md" target="_blank" class="report-btn">Read FinOps Analysis ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div>
+                    <strong>Nexus CloudOps Platform</strong> • Architected by <a href="https://github.com/devop-jigyasa" target="_blank" class="text-cyan">Jigyasa</a>
+                </div>
+                <div class="footer-links">
+                    <span>Decoupled Architecture: Vercel Serverless Edge (Frontend) + Render Cloud (Microservice Engine)</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

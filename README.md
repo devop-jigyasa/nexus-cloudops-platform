@@ -3,7 +3,8 @@
 # ⚡ Nexus CloudOps Platform
 ### **Enterprise-Grade Cloud Infrastructure, DevSecOps CI/CD, Kubernetes Orchestration & Observability Platform**
 
-[![Live Cloud Demo](https://img.shields.io/badge/Live_Demo-Online_(24%2F7)-00c58e?style=for-the-badge&logo=render&logoColor=white)](https://nexus-cloudops-platform.onrender.com/api/docs)
+[![Live Cloud Demo](https://img.shields.io/badge/Live_Demo-Vercel_(24%2F7)-566D53?style=for-the-badge&logo=vercel&logoColor=white)](https://nexus-cloudops-platform.vercel.app)
+[![Backend API Status](https://img.shields.io/badge/API_Engine-Render_Online-346170?style=for-the-badge&logo=render&logoColor=white)](https://nexus-cloudops-platform.onrender.com/healthz)
 [![GitHub Repository](https://img.shields.io/badge/GitHub_Repo-nexus--cloudops--platform-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/devop-jigyasa/nexus-cloudops-platform)
 
 <br/>
@@ -18,8 +19,8 @@
 
 <br/>
 
-**[🌐 Live Cloud Deployment](https://nexus-cloudops-platform.onrender.com/api/docs)** • 
-**[📖 Interactive Swagger Docs](https://nexus-cloudops-platform.onrender.com/api/docs)** • 
+**[🌐 Live Cloud Deployment (Vercel)](https://nexus-cloudops-platform.vercel.app)** • 
+**[📖 Interactive Swagger Docs (Render)](https://nexus-cloudops-platform.onrender.com/api/docs)** • 
 **[🏗️ Architecture Blueprint](#-system-architecture)** • 
 **[🛡️ DevSecOps Pipeline](#-devsecops-cicd-pipeline)** • 
 **[📑 Engineering Reports](#-platform-engineering-reports--audit-benchmarks)** • 
@@ -122,7 +123,11 @@ nexus-cloudops-platform/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml                 # 5-Stage DevSecOps CI/CD Pipeline
-├── app/                           # Cloud-Native Python Microservice
+├── app/                           # Cloud-Native Python Microservice & Mission Control
+│   ├── static/                    # Decoupled Vercel Edge Frontend Dashboard
+│   │   ├── index.html             # Mission Control UI, probes & telemetry
+│   │   ├── style.css              # Cyberpunk glassmorphism design system
+│   │   └── app.js                 # Live health checks, cold-start auto-wake & Redis bench
 │   ├── src/
 │   │   ├── main.py                # FastAPI engine with probes, Redis cache & metrics
 │   │   ├── config.py              # Pydantic-based settings & environment loader
@@ -169,6 +174,7 @@ nexus-cloudops-platform/
 │   ├── setup-local.ps1            # Windows automated launch script
 │   └── setup-local.sh             # Linux/macOS automated launch script
 ├── docker-compose.yml             # Local multi-tier container orchestration
+├── vercel.json                    # Vercel serverless edge routing configuration
 ├── Makefile                       # Developer command shortcuts
 ├── .gitattributes                 # Cross-platform LF line-ending enforcement
 └── README.md                      # Platform documentation & operations manual
@@ -283,9 +289,12 @@ terraform apply -auto-approve
 ## ⚡ Quickstart Guide
 
 ### Option 1: Live Cloud Demo (Instant)
-Access the live production deployment hosted 24/7 on Render:
-* **Interactive Swagger UI:** [https://nexus-cloudops-platform.onrender.com/api/docs](https://nexus-cloudops-platform.onrender.com/api/docs)
-* **Liveness Probe:** [https://nexus-cloudops-platform.onrender.com/healthz](https://nexus-cloudops-platform.onrender.com/healthz)
+The platform utilizes a **Decoupled Edge Architecture** (matching [KubePulse](https://kubepulse-eks.vercel.app) & [Aegis](https://aegis-self-healing-platform-static.vercel.app/)):
+* **🌐 Mission Control Dashboard (Vercel Edge CDN):** [https://nexus-cloudops-platform.vercel.app](https://nexus-cloudops-platform.vercel.app) *(Loads in &lt; 50ms with zero cold start)*
+* **⚡ Backend API Engine & Probes (Render):** [https://nexus-cloudops-platform.onrender.com/healthz](https://nexus-cloudops-platform.onrender.com/healthz)
+* **📖 Interactive Swagger UI Docs:** [https://nexus-cloudops-platform.onrender.com/api/docs](https://nexus-cloudops-platform.onrender.com/api/docs)
+
+> **💡 Zero-Cold-Start Handling:** Because Render free-tier containers sleep after 15 minutes of inactivity, the Vercel frontend automatically detects cold starts, displays an animated wake-up progress indicator, and polls `/healthz` until the backend is fully operational without locking or crashing the browser.
 
 ---
 

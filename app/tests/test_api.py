@@ -57,7 +57,16 @@ def test_cache_post_success(client, mock_redis):
     assert response.json()["message"] == "Value stored successfully"
 
 
-def test_root_redirect(client):
+def test_root_dashboard(client):
+    response = client.get("/")
+    assert response.status_code == status.HTTP_200_OK
+    assert "Nexus CloudOps" in response.text
+
+
+def test_root_fallback_redirect(client, monkeypatch):
+    import app.src.main as main_module
+
+    monkeypatch.setattr(main_module, "STATIC_DIR", "/non_existent_path")
     response = client.get("/", follow_redirects=False)
     assert response.status_code == status.HTTP_307_TEMPORARY_REDIRECT
     assert response.headers["location"] == "/api/docs"

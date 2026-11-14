@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy installed wheels from builder
 COPY --from=builder /root/.local /home/appuser/.local
 COPY src/ ./src/
+COPY static/ ./static/
 
 ENV PATH=/home/appuser/.local/bin:$PATH \
     PYTHONUNBUFFERED=1 \

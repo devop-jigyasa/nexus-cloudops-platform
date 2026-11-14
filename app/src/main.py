@@ -1,8 +1,11 @@
+import os
 import time
 import socket
 import logging
 from fastapi import FastAPI, Request, Response, status
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse, RedirectResponse, FileResponse
 import redis
 from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 
@@ -24,14 +27,31 @@ app = FastAPI(
     title=settings.APP_NAME, version=settings.APP_VERSION, docs_url="/api/docs"
 )
 
+# Enable Cross-Origin Resource Sharing (CORS) for Decoupled Vercel Edge Frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 SYSTEM_INFO.labels(version=settings.APP_VERSION, environment=settings.ENVIRONMENT).set(
     1
 )
 
+# Static Dashboard Assets Mount
+STATIC_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
+if os.path.exists(STATIC_DIR):
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
 
 @app.get("/", include_in_schema=False)
 async def root():
-    """Redirect root traffic directly to interactive Swagger API documentation."""
+    """Serves Mission Control UI or redirects to interactive Swagger documentation."""
+    index_path = os.path.join(STATIC_DIR, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
     return RedirectResponse(url="/api/docs")
 
 
