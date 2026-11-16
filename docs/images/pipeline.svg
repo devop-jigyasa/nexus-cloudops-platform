@@ -104,13 +104,13 @@
   <path d="M 600,197 L 625,197" stroke="#10b981" stroke-width="2.5"/>
   <polygon points="625,197 617,192 617,202" fill="#10b981"/>
 
-  <!-- Stage 3: Trivy DevSecOps (Fixed: No header overlap) -->
+  <!-- Stage 3: Trivy DevSecOps -->
   <g transform="translate(625, 120)">
     <rect width="195" height="155" rx="10" fill="url(#cardGrad2)" stroke="#f43f5e" stroke-width="2" filter="url(#shadow)"/>
     <rect x="0" y="0" width="195" height="32" rx="10" fill="#f43f5e" opacity="0.2"/>
-    <text x="14" y="21" class="step-num" fill="#fb7185">STAGE 03 &#x2022; SECURITY</text>
-    <rect x="132" y="7" width="52" height="18" rx="4" fill="#10b981" opacity="0.2"/>
-    <text x="158" y="20" class="badge" text-anchor="middle">0 CVE</text>
+    <text x="14" y="21" class="step-num" fill="#fb7185">STAGE 03</text>
+    <rect x="130" y="7" width="52" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+    <text x="156" y="20" class="badge" text-anchor="middle">0 CVE</text>
 
     <text x="14" y="54" class="step-name">Trivy DevSecOps</text>
     <line x1="14" y1="62" x2="181" y2="62" stroke="#334155" stroke-width="1"/>
@@ -162,7 +162,7 @@
   <g transform="translate(415, 340)">
     <rect width="250" height="155" rx="10" fill="url(#cardGrad2)" stroke="#38bdf8" stroke-width="2" filter="url(#shadow)"/>
     <rect x="0" y="0" width="250" height="32" rx="10" fill="#1e293b" opacity="0.7"/>
-    <text x="14" y="21" class="step-num">STAGE 05 &#x2022; PACKAGING</text>
+    <text x="14" y="21" class="step-num">STAGE 05</text>
     <rect x="182" y="7" width="54" height="18" rx="4" fill="#10b981" opacity="0.2"/>
     <text x="209" y="20" class="badge" text-anchor="middle">VALID</text>
 
@@ -178,11 +178,11 @@
   <path d="M 665,417 L 700,417" stroke="#10b981" stroke-width="3"/>
   <polygon points="700,417 691,412 691,422" fill="#10b981"/>
 
-  <!-- Stage 6: Production Delivery (Fixed: Decoupled Vercel + Render, No Overlaps) -->
+  <!-- Stage 6: Production Delivery -->
   <g transform="translate(700, 340)">
     <rect width="340" height="155" rx="10" fill="url(#releaseGrad)" stroke="#10b981" stroke-width="2.5" filter="url(#shadow)"/>
     <rect x="0" y="0" width="340" height="32" rx="10" fill="#10b981" opacity="0.25"/>
-    <text x="16" y="21" class="step-num" fill="#34d399">STAGE 06 &#x2022; DELIVERY</text>
+    <text x="16" y="21" class="step-num" fill="#34d399">STAGE 06</text>
     <rect x="245" y="7" width="80" height="18" rx="4" fill="#10b981"/>
     <text x="285" y="20" font-family="-apple-system, sans-serif" font-weight="700" font-size="10" fill="#fff" text-anchor="middle">DEPLOYED</text>
 
