@@ -21,48 +21,52 @@
 
   <style>
     .main-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 28px; fill: #ffffff; letter-spacing: 1px; }
-    .main-subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 14px; fill: #94a3b8; letter-spacing: 0.5px; }
+    .main-subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 13px; fill: #94a3b8; letter-spacing: 0.5px; }
     .badge-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 11px; fill: #ffffff; }
     .zone-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; fill: #38bdf8; letter-spacing: 0.8px; text-transform: uppercase; }
-    .card-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 16px; fill: #f8fafc; }
-    .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 13px; fill: #38bdf8; }
-    .card-txt { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 14px; fill: #cbd5e1; }
-    .card-code { font-family: 'JetBrains Mono', Consolas, Monaco, monospace; font-size: 13px; fill: #00f2fe; font-weight: 600; }
-    .tag-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 12px; fill: #34d399; }
+    .card-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; }
+    .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 12px; fill: #38bdf8; }
+    .card-txt { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 400; font-size: 13px; fill: #cbd5e1; }
+    .card-code { font-family: 'JetBrains Mono', Consolas, Monaco, monospace; font-size: 12px; fill: #00f2fe; font-weight: 600; }
+    .tag-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 11px; fill: #34d399; }
   </style>
 
-  <!-- Background -->
+  <!-- Background Canvas -->
   <rect width="1080" height="770" rx="16" fill="url(#bgGradient)"/>
   <rect width="1080" height="770" rx="16" fill="none" stroke="#334155" stroke-width="2"/>
 
   <!-- Subtle Architectural Grid -->
-  <g opacity="0.05">
+  <g opacity="0.04">
     <path d="M 0,70 L 1080,70 M 0,140 L 1080,140 M 0,210 L 1080,210 M 0,280 L 1080,280 M 0,350 L 1080,350 M 0,420 L 1080,420 M 0,490 L 1080,490 M 0,560 L 1080,560 M 0,630 L 1080,630 M 0,700 L 1080,700" stroke="#38bdf8" stroke-width="1.5"/>
     <path d="M 70,0 L 70,770 M 140,0 L 140,770 M 210,0 L 210,770 M 280,0 L 280,770 M 350,0 L 350,770 M 420,0 L 420,770 M 490,0 L 490,770 M 560,0 L 560,770 M 630,0 L 630,770 M 700,0 L 700,770 M 770,0 L 770,770 M 840,0 L 840,770 M 910,0 L 910,770 M 980,0 L 980,770" stroke="#38bdf8" stroke-width="1.5"/>
   </g>
 
   <!-- TOP HEADER -->
-  <g transform="translate(40, 32)">
+  <g transform="translate(40, 28)">
     <!-- Pill Badges -->
-    <rect x="0" y="0" width="120" height="26" rx="13" fill="#2563eb" opacity="0.2"/>
-    <rect x="0" y="0" width="120" height="26" rx="13" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
-    <text x="60" y="17" class="badge-label" text-anchor="middle" fill="#93c5fd">☸️ KUBERNETES</text>
+    <rect x="0" y="0" width="115" height="26" rx="13" fill="#2563eb" opacity="0.2"/>
+    <rect x="0" y="0" width="115" height="26" rx="13" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="57" y="17" class="badge-label" text-anchor="middle" fill="#93c5fd">KUBERNETES</text>
 
-    <rect x="130" y="0" width="115" height="26" rx="13" fill="#844fba" opacity="0.2"/>
-    <rect x="130" y="0" width="115" height="26" rx="13" fill="none" stroke="#a855f7" stroke-width="1.5"/>
-    <text x="187" y="17" class="badge-label" text-anchor="middle" fill="#d8b4fe">🏗️ TERRAFORM</text>
+    <rect x="125" y="0" width="115" height="26" rx="13" fill="#844fba" opacity="0.2"/>
+    <rect x="125" y="0" width="115" height="26" rx="13" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="182" y="17" class="badge-label" text-anchor="middle" fill="#d8b4fe">TERRAFORM</text>
 
-    <rect x="255" y="0" width="115" height="26" rx="13" fill="#00d2b4" opacity="0.2"/>
-    <rect x="255" y="0" width="115" height="26" rx="13" fill="none" stroke="#00d2b4" stroke-width="1.5"/>
-    <text x="312" y="17" class="badge-label" text-anchor="middle" fill="#5eead4">☁️ LOCALSTACK</text>
+    <rect x="250" y="0" width="115" height="26" rx="13" fill="#00d2b4" opacity="0.2"/>
+    <rect x="250" y="0" width="115" height="26" rx="13" fill="none" stroke="#00d2b4" stroke-width="1.5"/>
+    <text x="307" y="17" class="badge-label" text-anchor="middle" fill="#5eead4">LOCALSTACK</text>
 
-    <rect x="380" y="0" width="120" height="26" rx="13" fill="#ff6b6b" opacity="0.2"/>
-    <rect x="380" y="0" width="120" height="26" rx="13" fill="none" stroke="#f43f5e" stroke-width="1.5"/>
-    <text x="440" y="17" class="badge-label" text-anchor="middle" fill="#fda4af">🛡️ DEVSECOPS</text>
+    <rect x="375" y="0" width="115" height="26" rx="13" fill="#ff6b6b" opacity="0.2"/>
+    <rect x="375" y="0" width="115" height="26" rx="13" fill="none" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="432" y="17" class="badge-label" text-anchor="middle" fill="#fda4af">DEVSECOPS</text>
 
-    <rect x="510" y="0" width="135" height="26" rx="13" fill="#e6522c" opacity="0.2"/>
-    <rect x="510" y="0" width="135" height="26" rx="13" fill="none" stroke="#fb923c" stroke-width="1.5"/>
-    <text x="577" y="17" class="badge-label" text-anchor="middle" fill="#fdba74">📊 OBSERVABILITY</text>
+    <rect x="500" y="0" width="125" height="26" rx="13" fill="#e6522c" opacity="0.2"/>
+    <rect x="500" y="0" width="125" height="26" rx="13" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="562" y="17" class="badge-label" text-anchor="middle" fill="#fdba74">PROMETHEUS</text>
+
+    <rect x="635" y="0" width="145" height="26" rx="13" fill="#10b981" opacity="0.2"/>
+    <rect x="635" y="0" width="145" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1.5"/>
+    <text x="707" y="17" class="badge-label" text-anchor="middle" fill="#6ee7b7">VERCEL + RENDER</text>
 
     <!-- Main Title -->
     <text x="0" y="64" class="main-title">NEXUS CLOUDOPS PLATFORM</text>
@@ -75,14 +79,14 @@
   <g transform="translate(40, 150)">
     <rect width="200" height="420" rx="12" fill="#0b1329" stroke="#334155" stroke-width="1.5"/>
     <rect x="0" y="0" width="200" height="40" rx="12" fill="#1e293b" opacity="0.7"/>
-    <text x="18" y="26" class="zone-title">🌐 1. Edge &amp; Ingress</text>
+    <text x="18" y="26" class="zone-title">1. Edge &amp; Ingress</text>
 
     <!-- External Traffic Box -->
     <g transform="translate(15, 55)">
       <rect width="170" height="75" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#cardShadow)"/>
-      <text x="15" y="28" class="card-head">👥 Client Traffic</text>
+      <text x="15" y="28" class="card-head">Client Traffic</text>
       <text x="15" y="48" class="card-txt">HTTPS / TLS 1.3</text>
-      <text x="15" y="66" class="card-code">Port 443 ➔ Port 80</text>
+      <text x="15" y="66" class="card-code">Port 443 &#x2794; Port 80</text>
     </g>
 
     <!-- Arrow Down -->
@@ -95,37 +99,38 @@
       <text x="15" y="28" class="card-head">NGINX Ingress</text>
       <text x="15" y="48" class="card-sub">Layer 7 Routing</text>
       <line x1="15" y1="56" x2="155" y2="56" stroke="#334155" stroke-width="1"/>
-      <text x="15" y="76" class="card-txt">• /api/v1/* ➔ App</text>
-      <text x="15" y="94" class="card-txt">• /healthz ➔ Probes</text>
-      <text x="15" y="112" class="card-txt">• /metrics ➔ SRE</text>
+      <text x="15" y="76" class="card-txt">&#x2022; /api/v1/* &#x2794; App</text>
+      <text x="15" y="94" class="card-txt">&#x2022; /healthz &#x2794; Probes</text>
+      <text x="15" y="112" class="card-txt">&#x2022; /metrics &#x2794; SRE</text>
     </g>
 
     <!-- Security Gateway -->
     <g transform="translate(15, 305)">
       <rect width="170" height="100" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
-      <text x="15" y="28" class="card-head">🛡️ Security Gateway</text>
-      <text x="15" y="52" class="card-txt">• Rate Limit (100 r/s)</text>
-      <text x="15" y="72" class="card-txt">• CORS Header Check</text>
-      <text x="15" y="92" class="card-txt">• SSL Auto-Terminated</text>
+      <text x="15" y="28" class="card-head">Security Gateway</text>
+      <text x="15" y="52" class="card-txt">&#x2022; Rate Limit (100 r/s)</text>
+      <text x="15" y="72" class="card-txt">&#x2022; CORS Header Check</text>
+      <text x="15" y="92" class="card-txt">&#x2022; SSL Auto-Terminated</text>
     </g>
   </g>
 
-  <!-- COLUMN 2: PRODUCTION KUBERNETES RUNTIME (Width: 410) -->
+  <!-- COLUMN 2: PRODUCTION KUBERNETES RUNTIME (Width: 410) (Fixed: Zero Text Collisions) -->
   <g transform="translate(265, 150)">
     <rect width="410" height="420" rx="12" fill="#0b1329" stroke="#0284c7" stroke-width="2"/>
     <rect x="0" y="0" width="410" height="40" rx="12" fill="#0369a1" opacity="0.4"/>
-    <text x="20" y="26" class="zone-title">☸️ 2. Kubernetes Cluster (EKS / Local)</text>
+    <text x="20" y="26" class="zone-title">2. Kubernetes Cluster</text>
     
-    <rect x="300" y="9" width="95" height="22" rx="11" fill="#0284c7"/>
-    <text x="347" y="24" class="badge-label" text-anchor="middle">HPA: 2-10 PODS</text>
+    <!-- HPA Badge with Generous Left Buffer -->
+    <rect x="290" y="9" width="105" height="22" rx="11" fill="#0284c7"/>
+    <text x="342" y="24" class="badge-label" text-anchor="middle">HPA: 2-10 PODS</text>
 
-    <!-- K8s Service Card -->
+    <!-- K8s Service Card (Fixed: No text collision with port badge) -->
     <g transform="translate(20, 52)">
       <rect width="370" height="65" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="18" y="26" class="card-head">ClusterIP Service: nexus-app-service</text>
-      <text x="18" y="48" class="card-txt">Internal Load Balancing • Port: 80 ➔ TargetPort: 8000</text>
-      <rect x="275" y="10" width="80" height="20" rx="5" fill="#0284c7" opacity="0.3"/>
-      <text x="315" y="24" class="card-code" text-anchor="middle">port: 80</text>
+      <text x="18" y="26" class="card-head">Service: nexus-app-service</text>
+      <text x="18" y="48" class="card-txt">Internal Load Balancing &#x2022; Port: 80 &#x2794; TargetPort: 8000</text>
+      <rect x="280" y="10" width="75" height="20" rx="5" fill="#0284c7" opacity="0.3"/>
+      <text x="317" y="24" class="card-code" text-anchor="middle">port: 80</text>
     </g>
 
     <!-- Pod 1 Card -->
@@ -136,8 +141,8 @@
       <rect x="255" y="12" width="100" height="22" rx="5" fill="#10b981" opacity="0.2"/>
       <text x="305" y="27" class="tag-text" text-anchor="middle">READY (1/1)</text>
 
-      <text x="18" y="52" class="card-txt">• Runtime: Python 3.11 FastAPI (Uvicorn 2 Workers)</text>
-      <text x="18" y="72" class="card-txt">• Security: Non-Root UID 10001 | Probes: /healthz, /readyz</text>
+      <text x="18" y="52" class="card-txt">&#x2022; Runtime: Python 3.11 FastAPI (Uvicorn 2 Workers)</text>
+      <text x="18" y="72" class="card-txt">&#x2022; Security: Non-Root UID 10001 | Probes: /healthz, /readyz</text>
     </g>
 
     <!-- Pod 2 Card -->
@@ -148,54 +153,54 @@
       <rect x="255" y="12" width="100" height="22" rx="5" fill="#10b981" opacity="0.2"/>
       <text x="305" y="27" class="tag-text" text-anchor="middle">READY (1/1)</text>
 
-      <text x="18" y="52" class="card-txt">• Runtime: Python 3.11 FastAPI (Uvicorn 2 Workers)</text>
-      <text x="18" y="72" class="card-txt">• Security: Non-Root UID 10001 | Probes: /healthz, /readyz</text>
+      <text x="18" y="52" class="card-txt">&#x2022; Runtime: Python 3.11 FastAPI (Uvicorn 2 Workers)</text>
+      <text x="18" y="72" class="card-txt">&#x2022; Security: Non-Root UID 10001 | Probes: /healthz, /readyz</text>
     </g>
 
     <!-- HPA & Autoscaling Card -->
     <g transform="translate(20, 318)">
       <rect width="370" height="85" rx="10" fill="#0f172a" stroke="#334155" stroke-dasharray="4" stroke-width="1.5"/>
-      <text x="18" y="26" class="card-sub">⚡ Horizontal Pod Autoscaler (HPA) &amp; Rolling Updates</text>
-      <text x="18" y="50" class="card-txt">• Autoscaling: 2 ➔ 10 Replicas on CPU &gt; 70% threshold</text>
-      <text x="18" y="72" class="card-txt">• RollingUpdate: maxSurge: 1, maxUnavailable: 0 (Zero Downtime)</text>
+      <text x="18" y="26" class="card-sub">&#x26A1; Horizontal Pod Autoscaler (HPA) &amp; Rolling Updates</text>
+      <text x="18" y="50" class="card-txt">&#x2022; Autoscaling: 2 &#x2794; 10 Replicas on CPU &gt; 70% threshold</text>
+      <text x="18" y="72" class="card-txt">&#x2022; RollingUpdate: maxSurge: 1, maxUnavailable: 0 (Zero Downtime)</text>
     </g>
   </g>
 
-  <!-- COLUMN 3: STATE & DATA LAYER (Width: 365) -->
+  <!-- COLUMN 3: STATE & DATA LAYER (Width: 345) -->
   <g transform="translate(695, 150)">
     <rect width="345" height="420" rx="12" fill="#0b1329" stroke="#334155" stroke-width="1.5"/>
     <rect x="0" y="0" width="345" height="40" rx="12" fill="#1e293b" opacity="0.7"/>
-    <text x="20" y="26" class="zone-title">💾 3. State &amp; Storage Layer</text>
+    <text x="20" y="26" class="zone-title">3. State &amp; Storage Layer</text>
 
     <!-- Redis Container -->
     <g transform="translate(18, 52)">
       <rect width="310" height="110" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="2" filter="url(#cardShadow)"/>
-      <text x="18" y="28" class="card-head">⚡ Redis 7.2 In-Memory Cache</text>
+      <text x="18" y="28" class="card-head">&#x26A1; Redis 7.2 In-Memory Cache</text>
       <text x="18" y="48" class="card-sub">Sub-millisecond State Storage</text>
       <line x1="18" y1="56" x2="292" y2="56" stroke="#334155" stroke-width="1"/>
-      <text x="18" y="76" class="card-txt">• Port: 6379 (Isolated Bridge Network)</text>
-      <text x="18" y="96" class="card-txt">• Eviction: Volatile-LRU | Healthcheck: ping</text>
+      <text x="18" y="76" class="card-txt">&#x2022; Port: 6379 (Isolated Bridge Network)</text>
+      <text x="18" y="96" class="card-txt">&#x2022; Eviction: Volatile-LRU | Healthcheck: ping</text>
     </g>
 
     <!-- LocalStack / AWS Cloud Parity -->
     <g transform="translate(18, 175)">
       <rect width="310" height="120" rx="10" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="2" filter="url(#cardShadow)"/>
-      <text x="18" y="28" class="card-head">☁️ LocalStack AWS Cloud Parity</text>
+      <text x="18" y="28" class="card-head">&#x2601; LocalStack AWS Cloud Parity</text>
       <text x="18" y="48" class="card-sub">Dual-Target $0.00 Emulation</text>
       <line x1="18" y1="56" x2="292" y2="56" stroke="#334155" stroke-width="1"/>
-      <text x="18" y="76" class="card-txt">• S3: s3://nexus-platform-artifacts</text>
-      <text x="18" y="94" class="card-txt">• S3 Backend: s3://nexus-terraform-state</text>
-      <text x="18" y="112" class="card-txt">• DynamoDB: nexus-terraform-locks</text>
+      <text x="18" y="76" class="card-txt">&#x2022; S3: s3://nexus-platform-artifacts</text>
+      <text x="18" y="94" class="card-txt">&#x2022; S3 Backend: s3://nexus-terraform-state</text>
+      <text x="18" y="112" class="card-txt">&#x2022; DynamoDB: nexus-terraform-locks</text>
     </g>
 
     <!-- Prometheus & Grafana -->
     <g transform="translate(18, 308)">
       <rect width="310" height="95" rx="10" fill="url(#cardGrad)" stroke="#f43f5e" stroke-width="2" filter="url(#cardShadow)"/>
-      <text x="18" y="26" class="card-head">📊 Observability Stack</text>
+      <text x="18" y="26" class="card-head">&#x1F4CA; Observability Stack</text>
       <text x="18" y="48" class="card-sub">Prometheus &amp; Grafana</text>
       <line x1="18" y1="56" x2="292" y2="56" stroke="#334155" stroke-width="1"/>
-      <text x="18" y="76" class="card-txt">• Scrapes /metrics @ 15s (RED metrics)</text>
-      <text x="18" y="92" class="card-txt">• Grafana Telemetry: p50/p95/p99 Latency</text>
+      <text x="18" y="76" class="card-txt">&#x2022; Scrapes /metrics @ 15s (RED metrics)</text>
+      <text x="18" y="92" class="card-txt">&#x2022; Grafana Telemetry: p50/p90/p99 Latency</text>
     </g>
   </g>
 
@@ -208,73 +213,73 @@
   <path d="M 675,230 L 713,230" stroke="#10b981" stroke-width="3" stroke-dasharray="4"/>
   <polygon points="713,230 703,224 703,236" fill="#10b981"/>
 
-  <!-- BOTTOM FOOTER: DEVSECOPS CI/CD PIPELINE -->
+  <!-- BOTTOM FOOTER: DEVSECOPS CI/CD PIPELINE (Fixed: Zero Text-Badge Overlaps across all 5 steps) -->
   <g transform="translate(40, 590)">
     <rect width="1000" height="150" rx="12" fill="#0f172a" stroke="#8b5cf6" stroke-width="2"/>
     <rect x="0" y="0" width="1000" height="34" rx="12" fill="#7c3aed" opacity="0.3"/>
-    <text x="20" y="23" class="zone-title" fill="#c084fc">🛡️ DevSecOps Continuous Integration &amp; Automated Delivery Gates</text>
+    <text x="20" y="23" class="zone-title" fill="#c084fc">DevSecOps Continuous Integration &amp; Automated Delivery Gates</text>
 
-    <!-- 5 Pipeline Steps with Large Text -->
+    <!-- 5 Pipeline Steps with Guaranteed No Overlaps -->
     <!-- Step 1 -->
     <g transform="translate(20, 48)">
-      <rect width="175" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-      <text x="14" y="26" class="card-head" font-size="14">1. Lint &amp; Style</text>
-      <rect x="115" y="10" width="48" height="18" rx="4" fill="#10b981" opacity="0.2"/>
-      <text x="139" y="23" class="badge-label" text-anchor="middle" fill="#34d399">PASS</text>
-      <text x="14" y="50" class="card-txt" font-size="13">• Flake8 PEP8 Check</text>
-      <text x="14" y="70" class="card-txt" font-size="13">• Black Formatter</text>
+      <rect width="176" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+      <text x="12" y="26" class="card-head" font-size="13">1. Lint &amp; Style</text>
+      <rect x="120" y="10" width="44" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="142" y="23" class="badge-label" text-anchor="middle" fill="#34d399">PASS</text>
+      <text x="12" y="50" class="card-txt" font-size="12">&#x2022; Flake8 PEP8 Check</text>
+      <text x="12" y="70" class="card-txt" font-size="12">&#x2022; Black Formatter</text>
     </g>
 
-    <!-- Arrow -->
-    <polygon points="210,90 202,85 202,95" fill="#a855f7"/>
+    <!-- Arrow 1 -> 2 -->
+    <polygon points="208,90 200,85 200,95" fill="#a855f7"/>
 
     <!-- Step 2 -->
-    <g transform="translate(218, 48)">
-      <rect width="175" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-      <text x="14" y="26" class="card-head" font-size="14">2. Unit Tests</text>
-      <rect x="115" y="10" width="48" height="18" rx="4" fill="#10b981" opacity="0.2"/>
-      <text x="139" y="23" class="badge-label" text-anchor="middle" fill="#34d399">PASS</text>
-      <text x="14" y="50" class="card-txt" font-size="13">• Pytest Test Suite</text>
-      <text x="14" y="70" class="card-txt" font-size="13">• Mock Redis Tests</text>
+    <g transform="translate(216, 48)">
+      <rect width="176" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+      <text x="12" y="26" class="card-head" font-size="13">2. Unit Tests</text>
+      <rect x="120" y="10" width="44" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="142" y="23" class="badge-label" text-anchor="middle" fill="#34d399">PASS</text>
+      <text x="12" y="50" class="card-txt" font-size="12">&#x2022; Pytest Suite (94%)</text>
+      <text x="12" y="70" class="card-txt" font-size="12">&#x2022; Mock Redis Harness</text>
     </g>
 
-    <!-- Arrow -->
-    <polygon points="408,90 400,85 400,95" fill="#a855f7"/>
+    <!-- Arrow 2 -> 3 -->
+    <polygon points="404,90 396,85 396,95" fill="#a855f7"/>
 
-    <!-- Step 3 -->
-    <g transform="translate(416, 48)">
-      <rect width="180" height="85" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
-      <text x="14" y="26" class="card-head" font-size="14">3. Trivy Security</text>
-      <rect x="118" y="10" width="50" height="18" rx="4" fill="#10b981" opacity="0.2"/>
-      <text x="143" y="23" class="badge-label" text-anchor="middle" fill="#34d399">0 CVE</text>
-      <text x="14" y="50" class="card-txt" font-size="13">• CVE Filesystem Scan</text>
-      <text x="14" y="70" class="card-txt" font-size="13">• Secrets &amp; IaC Audit</text>
+    <!-- Step 3 (Fixed: Short title, 0 CVE badge, no collision) -->
+    <g transform="translate(412, 48)">
+      <rect width="176" height="85" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+      <text x="12" y="26" class="card-head" font-size="13">3. Security</text>
+      <rect x="114" y="10" width="50" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="139" y="23" class="badge-label" text-anchor="middle" fill="#34d399">0 CVE</text>
+      <text x="12" y="50" class="card-txt" font-size="12">&#x2022; Filesystem CVE Scan</text>
+      <text x="12" y="70" class="card-txt" font-size="12">&#x2022; Secrets &amp; IaC Audit</text>
     </g>
 
-    <!-- Arrow -->
-    <polygon points="611,90 603,85 603,95" fill="#a855f7"/>
+    <!-- Arrow 3 -> 4 -->
+    <polygon points="600,90 592,85 592,95" fill="#a855f7"/>
 
-    <!-- Step 4 -->
-    <g transform="translate(619, 48)">
-      <rect width="180" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-      <text x="14" y="26" class="card-head" font-size="14">4. Docker Buildx</text>
-      <rect x="118" y="10" width="50" height="18" rx="4" fill="#10b981" opacity="0.2"/>
-      <text x="143" y="23" class="badge-label" text-anchor="middle" fill="#34d399">PASS</text>
-      <text x="14" y="50" class="card-txt" font-size="13">• Multi-Stage Build</text>
-      <text x="14" y="70" class="card-txt" font-size="13">• UID 10001 Sandbox</text>
+    <!-- Step 4 (Fixed: Short title, PASS badge, no collision) -->
+    <g transform="translate(608, 48)">
+      <rect width="176" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+      <text x="12" y="26" class="card-head" font-size="13">4. Container</text>
+      <rect x="120" y="10" width="44" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="142" y="23" class="badge-label" text-anchor="middle" fill="#34d399">PASS</text>
+      <text x="12" y="50" class="card-txt" font-size="12">&#x2022; Multi-Stage Buildx</text>
+      <text x="12" y="70" class="card-txt" font-size="12">&#x2022; UID 10001 Sandbox</text>
     </g>
 
-    <!-- Arrow -->
-    <polygon points="814,90 806,85 806,95" fill="#a855f7"/>
+    <!-- Arrow 4 -> 5 -->
+    <polygon points="796,90 788,85 788,95" fill="#a855f7"/>
 
-    <!-- Step 5 -->
-    <g transform="translate(822, 48)">
-      <rect width="158" height="85" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
-      <text x="14" y="26" class="card-head" font-size="14" fill="#34d399">5. Helm &amp; Deploy</text>
-      <rect x="100" y="10" width="48" height="18" rx="4" fill="#10b981" opacity="0.2"/>
-      <text x="124" y="23" class="badge-label" text-anchor="middle" fill="#34d399">LIVE</text>
-      <text x="14" y="50" class="card-txt" font-size="13">• Helm Lint / Template</text>
-      <text x="14" y="70" class="card-txt" font-size="13">• Live Cloud Release</text>
+    <!-- Step 5 (Fixed: Short title, LIVE badge, no collision) -->
+    <g transform="translate(804, 48)">
+      <rect width="176" height="85" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+      <text x="12" y="26" class="card-head" font-size="13" fill="#34d399">5. Delivery</text>
+      <rect x="120" y="10" width="44" height="18" rx="4" fill="#10b981" opacity="0.2"/>
+      <text x="142" y="23" class="badge-label" text-anchor="middle" fill="#34d399">LIVE</text>
+      <text x="12" y="50" class="card-txt" font-size="12">&#x2022; Helm Lint / Package</text>
+      <text x="12" y="70" class="card-txt" font-size="12">&#x2022; Vercel + Render</text>
     </g>
   </g>
 </svg>
