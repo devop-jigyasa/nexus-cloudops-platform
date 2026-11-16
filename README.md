@@ -400,7 +400,8 @@ trivy fs .
 
 * **GitHub:** [@devop-jigyasa](https://github.com/devop-jigyasa)
 * **Project Repository:** [nexus-cloudops-platform](https://github.com/devop-jigyasa/nexus-cloudops-platform)
-* **Live Deployment:** [nexus-cloudops-platform.onrender.com](https://nexus-cloudops-platform.onrender.com/api/docs)
+* **Live Cloud Deployment:** [nexus-cloudops-platform-app.vercel.app](https://nexus-cloudops-platform-app.vercel.app/)
+* **Live API Engine:** [nexus-cloudops-platform.onrender.com](https://nexus-cloudops-platform.onrender.com/healthz)
 
 ---
 
