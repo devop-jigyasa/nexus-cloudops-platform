@@ -125,11 +125,12 @@ The platform is permanently deployed 24/7 in production with **$0.00 cloud opera
 | **Interactive Mission Control Dashboard** | **Vercel** (Global Edge CDN, &lt; 50ms) | **[https://nexus-cloudops-platform-app.vercel.app/](https://nexus-cloudops-platform-app.vercel.app/)** | 🟢 **ONLINE** |
 | **Microservice REST API Engine** | **Render** (Python 3.11 FastAPI) | **[https://nexus-cloudops-platform.onrender.com/healthz](https://nexus-cloudops-platform.onrender.com/healthz)** | 🟢 **HEALTHY** |
 | **Interactive Swagger API Documentation** | **Render** (OpenAPI / Swagger UI) | **[https://nexus-cloudops-platform.onrender.com/api/docs](https://nexus-cloudops-platform.onrender.com/api/docs)** | 🟢 **ONLINE** |
+| **24/7 SLA Synthetic Uptime Monitor** | **UptimeRobot** (5-Minute HTTP Heartbeat) | **[https://nexus-cloudops-platform.onrender.com/healthz](https://nexus-cloudops-platform.onrender.com/healthz)** | 🟢 **ACTIVE (100% SLA)** |
 | **Cloud Persistence & Acceleration Layer** | **Redis 7.2** (In-Memory Sub-ms Cache) | `localhost:6379` / Container TCP Pool | 🟢 **CONNECTED** |
 | **Zero-Cost AWS Emulation Target** | **LocalStack AWS 3.0** | `http://localhost:4566` (S3, DynamoDB, IAM) | 🟢 **PARITY READY** |
 | **Prometheus SRE Telemetry Metrics** | **Prometheus Server** | **[https://nexus-cloudops-platform.onrender.com/metrics](https://nexus-cloudops-platform.onrender.com/metrics)** | 🟢 **SCRAPING @ 15s** |
 
-> **💡 Zero-Cold-Start Decoupled Architecture:** Hosted on Vercel's global edge network, the dashboard loads in &lt; 50ms worldwide. If Render's free-tier container is sleeping from inactivity, the frontend automatically displays an animated wake-up progress bar and reconnects seamlessly without browser timeouts.
+> **💡 Zero-Cold-Start Decoupled Architecture:** Hosted on Vercel's global edge network, the dashboard loads in &lt; 50ms worldwide. Backed by an automated UptimeRobot heartbeat pinging `/healthz` every 5 minutes, Render's backend container remains warm 24/7 with zero cold-start hibernation.
 
 ---
 
