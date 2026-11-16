@@ -3,7 +3,7 @@
 # ⚡ Nexus CloudOps Platform
 ### **Enterprise-Grade Cloud Infrastructure, DevSecOps CI/CD, Kubernetes Orchestration & Observability Platform**
 
-[![Live Cloud Demo](https://img.shields.io/badge/Live_Demo-Vercel_(24%2F7)-566D53?style=for-the-badge&logo=vercel&logoColor=white)](https://nexus-cloudops-platform.vercel.app)
+[![Live Cloud Demo](https://img.shields.io/badge/Live_Demo-Vercel_(24%2F7)-566D53?style=for-the-badge&logo=vercel&logoColor=white)](https://nexus-cloudops-platform-app.vercel.app/)
 [![Backend API Status](https://img.shields.io/badge/API_Engine-Render_Online-346170?style=for-the-badge&logo=render&logoColor=white)](https://nexus-cloudops-platform.onrender.com/healthz)
 [![GitHub Repository](https://img.shields.io/badge/GitHub_Repo-nexus--cloudops--platform-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/devop-jigyasa/nexus-cloudops-platform)
 
@@ -19,7 +19,7 @@
 
 <br/>
 
-**[🌐 Live Cloud Deployment (Vercel)](https://nexus-cloudops-platform.vercel.app)** • 
+**[🌐 Live Cloud Deployment (Vercel)](https://nexus-cloudops-platform-app.vercel.app/)** • 
 **[📖 Interactive Swagger Docs (Render)](https://nexus-cloudops-platform.onrender.com/api/docs)** • 
 **[🏗️ Architecture Blueprint](#-system-architecture)** • 
 **[🛡️ DevSecOps Pipeline](#-devsecops-cicd-pipeline)** • 
@@ -290,7 +290,7 @@ terraform apply -auto-approve
 
 ### Option 1: Live Cloud Demo (Instant)
 The platform utilizes a **Decoupled Edge Architecture** (matching [KubePulse](https://kubepulse-eks.vercel.app) & [Aegis](https://aegis-self-healing-platform-static.vercel.app/)):
-* **🌐 Mission Control Dashboard (Vercel Edge CDN):** [https://nexus-cloudops-platform.vercel.app](https://nexus-cloudops-platform.vercel.app) *(Loads in &lt; 50ms with zero cold start)*
+* **🌐 Mission Control Dashboard (Vercel Edge CDN):** [https://nexus-cloudops-platform-app.vercel.app/](https://nexus-cloudops-platform-app.vercel.app/) *(Loads in &lt; 50ms with zero cold start)*
 * **⚡ Backend API Engine & Probes (Render):** [https://nexus-cloudops-platform.onrender.com/healthz](https://nexus-cloudops-platform.onrender.com/healthz)
 * **📖 Interactive Swagger UI Docs:** [https://nexus-cloudops-platform.onrender.com/api/docs](https://nexus-cloudops-platform.onrender.com/api/docs)
 
